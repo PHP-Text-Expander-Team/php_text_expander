@@ -76,6 +76,65 @@
 
             $this->assertEquals([], $result);
         }
+
+        function test_snippet_find()
+        {
+            $shortcut = ";em";
+            $text = "me@email.com";
+            $new_snippet = new Snippet ($shortcut, $text);
+            $new_snippet->save();
+            $shortcut2 = ";name";
+            $text2 = "Darth Vader";
+            $new_snippet2 = new Snippet ($shortcut2, $text2);
+            $new_snippet2->save();
+
+            $result = Snippet::find($new_snippet->getId());
+
+            $this->assertEquals($new_snippet, $result);
+        }
+
+        function test_snippet_delete()
+        {
+            $shortcut = ";em";
+            $text = "me@email.com";
+            $new_snippet = new Snippet ($shortcut, $text);
+            $new_snippet->save();
+            $shortcut2 = ";name";
+            $text2 = "Darth Vader";
+            $new_snippet2 = new Snippet ($shortcut2, $text2);
+            $new_snippet2->save();
+
+            $new_snippet2->delete();
+            $result = Snippet::getAll();
+
+            $this->assertEquals([$new_snippet],$result);
+        }
+
+        function test_snippet_updateShortcut()
+        {
+            $shortcut = ";em";
+            $text = "me@email.com";
+            $new_snippet = new Snippet ($shortcut, $text);
+            $new_snippet->save();
+
+            $new_snippet->updateShortcut(";mail");
+            $result = Snippet::getAll();
+
+            $this->assertEquals([$new_snippet], $result);
+        }
+
+        function test_snippet_updateText()
+        {
+            $shortcut = ";em";
+            $text = "me@email.com";
+            $new_snippet = new Snippet ($shortcut, $text);
+            $new_snippet->save();
+
+            $new_snippet->updateText("vader@jedissuck.com");
+            $result = Snippet::getAll();
+
+            $this->assertEquals([$new_snippet], $result);
+        }
       // Testcode example
       //  function test_makeTitleCase_oneWord()
       //  {
