@@ -9,24 +9,6 @@
     <title>Text Expander</title>
   </head>
   <body>
-
-    <div class="container-fluid">
-        <h1>Text Expander</h1>
-        <h3>Text Input</h3>
-            <form action="/new_snippet" method="post">
-                <input type="text" name="text">
-                <h3>Shortcut</h3>
-                <input type="text" name="shortcut">
-                <button class="btn" type="submit">Generate</button>
-            </form>
-<!-- SHORTCUTS -->
-            {% if snippets is not empty %}
-            <h3>Archived Shortcuts:</h3>
-                {% for snippet in snippets %}
-                <li><a href="/this_snippet/{{ snippet.getId }}">{{ snippet.getShortcut }}</a></li>
-                {% endfor %}
-            {% endif %}
-<!-- RESULTS -->
     </div>
       <div class="container-fluid">
           <div class="row">
