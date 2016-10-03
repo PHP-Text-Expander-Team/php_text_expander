@@ -139,12 +139,12 @@
         function test_snippet_getPlaceHolders()
         {
             $shortcut = ";letter";
-            $text = "Hi there @#$1$#@ is your name really @#$1$#@? Thats @#$2$#@";
+            $text = "Hi there @!!@1@!!@ is your name really @!!@1@!!@? Thats @!!@2@!!@";
             $new_snippet = new Snippet ($shortcut, $text);
 
             $result = $new_snippet->getPlaceHolders($text);
 
-            $this->assertEquals(["@#$1$#@", "@#$1$#@", "@#$2$#@"],$result);
+            $this->assertEquals(["@!!@1@!!@", "@!!@2@!!@"],$result);
         }
       // Testcode example
       //  function test_makeTitleCase_oneWord()
