@@ -18,23 +18,25 @@
           <div class="row">
               <div class="col-md-4">
                   <h3>Text Input</h3>
-                  <input type="text" name="name">
+                    <form action="/new_snippet" method="post">
+                      <input type="text" name="text">
               </div>
               <div class="col-md-4">
                   <h3>Shortcut</h3>
-                  <input type="text" name="shortcut">
+                       <input type="text" name="shortcut">
               </div>
           </div>
           <div class="row">
               <div class="col-md-6">
-                  <button class="btn" type="submit">Generate</button>
+                        <button class="btn" type="submit">Generate</button>
+                  </form>
               </div>
               <div class="row">
                   <div class="col-md-6">
-                      {% if results is not empty %}
-                        <h3>Results:</h3>
-                        {% for results in result %}
-                        <li><a href="/">{{ result.getId }}</a>{{ result.getName }}</li>
+                      {% if snippets is not empty %}
+                        <h3>snippets:</h3>
+                        {% for snippet in snippets %}
+                        <li><a href="/new_snippet/{{ snippet.getId }}">{{ snippet.getShortcut }}</a></li>
                         {% endfor %}
                       {% endif %}
                   </div>
