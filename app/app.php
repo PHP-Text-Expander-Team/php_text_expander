@@ -25,16 +25,21 @@
 
   //loads actual twig file
     $app->get("/", function() use ($app) {
-      return $app['twig']->render("home.html.twig");
+        return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll()));
     });
 
     // get text input and shortcut input
-
-
+    $app->get("/snippets", function() use ($app) {
+        return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll()));
+      });
 
     // post text input and shortcut input
+    $app->post("new_snippet", function() use ($app) {
+        $shortcut = $_POST['shortcut'];
 
-    
+    });
+
+
 
     return $app;
 ?>
