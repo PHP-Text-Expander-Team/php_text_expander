@@ -65,7 +65,7 @@
     // show snippet
     $app->get("/this_snippet/{id}", function($id) use ($app) {
         $snippet = Snippet::find($id);
-        return $app['twig']->render('snippet.html.twig', array('snippets' => $snippet));
+        return $app['twig']->render('snippet.html.twig', array('snippet' => $snippet));
     });
     return $app;
 ?>

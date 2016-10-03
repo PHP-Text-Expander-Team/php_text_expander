@@ -11,9 +11,21 @@
   <body>
     <div class="container-fluid">
         <h1>Text Expander</h1>
-<!-- RESULTS -->
 
-    
+        <div>
+            <p>
+            Text with readable placeholders and their variable numbers here.
+            </p>
+        </div>
+
+        <div>
+            {% if variables is not empty %}
+            {% for variable in variables %}
+
+            {% endfor %}
+            {% endif %}
+        </div>
+
     </div>
   </body>
 </html>

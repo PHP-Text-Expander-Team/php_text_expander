@@ -71,6 +71,11 @@
             $GLOBALS['DB']->exec("UPDATE snippets SET text = '{$this->text}' WHERE id = {$this->getId()};");
         }
 
+        function getPlaceHolders($text)
+        {
+            
+        }
+
 //--getters and setters--
         function setShortcut($shortcut)
         {
