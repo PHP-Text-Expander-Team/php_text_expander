@@ -15,6 +15,9 @@
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
+    use Symfony\Component\HttpFoundation\Request;
+    Request::enableHttpMethodParameterOverride();
+
     $app = new Silex\Application();
 
     $app['debug'] = true;
@@ -37,7 +40,7 @@
         return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll()));
 
     // update snippet
-    $app->patch("/snippets/{id}", function($id) use ($app) {
+    $app->patch("/update_snippet/{id}", function($id) use ($app) {
         $new_snippet = $_POST['new_snippet'];
         $snippet = Snippet::find($id);
         $snippet->update($new_snippet);
@@ -46,12 +49,16 @@
     });
 
     // delete snippet
-    $app->delete("delete_snippet/{id}", function($id) use ($app) {
+    $app->delete("/delete_snippet/{id}", function($id) use ($app) {
         $snippet = Snippet::find($id);
         $snippet->delete();
         return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll()));
     });
 
-
+    // show snippet
+    $app->get("/this_snippet/{id}", function($id) use ($app) {
+        $snippet = Snippet::find($id);
+        return $app['twig']->render('shortcut.html.twig', array('snippets' => $snippet));
+    });
     return $app;
 ?>
