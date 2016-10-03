@@ -3,17 +3,17 @@
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/template.php";
 
-    //Epicodus
-    $server = 'mysql:host=localhost;dbname=best_restaurants_test';
-    $username = 'root';
-    $password = 'root';
-    $DB = new PDO($server, $username, $password);
-
-    //home mac
-    // $server = 'mysql:host=localhost:8889;dbname=best_restaurants';
+    // //Epicodus
+    // $server = 'mysql:host=localhost;dbname=best_restaurants_test';
     // $username = 'root';
     // $password = 'root';
     // $DB = new PDO($server, $username, $password);
+
+    //home mac
+    $server = 'mysql:host=localhost:8889;dbname=best_restaurants';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);
 
     // session_start();
     // if (empty($_SESSION['collection'])) {
