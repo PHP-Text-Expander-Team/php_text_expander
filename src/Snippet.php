@@ -32,7 +32,7 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO snippets (shortcut, text) VALUES ()");
+            $GLOBALS['DB']->exec("INSERT INTO snippets (shortcut, text) VALUES ({$this->getShortcut()}, {$this->getText()});");
         }
 
         function delete()
