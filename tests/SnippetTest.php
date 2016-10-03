@@ -109,6 +109,32 @@
 
             $this->assertEquals([$new_snippet],$result);
         }
+
+        function test_snippet_updateShortcut()
+        {
+            $shortcut = ";em";
+            $text = "me@email.com";
+            $new_snippet = new Snippet ($shortcut, $text);
+            $new_snippet->save();
+
+            $new_snippet->updateShortcut(";mail");
+            $result = Snippet::getAll();
+
+            $this->assertEquals([$new_snippet], $result);
+        }
+
+        function test_snippet_updateText()
+        {
+            $shortcut = ";em";
+            $text = "me@email.com";
+            $new_snippet = new Snippet ($shortcut, $text);
+            $new_snippet->save();
+
+            $new_snippet->updateText("vader@jedissuck.com");
+            $result = Snippet::getAll();
+
+            $this->assertEquals([$new_snippet], $result);
+        }
       // Testcode example
       //  function test_makeTitleCase_oneWord()
       //  {

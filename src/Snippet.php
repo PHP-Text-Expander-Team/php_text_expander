@@ -59,6 +59,11 @@
             $GLOBALS['DB']->exec("DELETE FROM snippets WHERE id = {$this->id};");
         }
 
+        function update()
+        {
+            
+        }
+
 //--getters and setters--
         function setShortcut($shortcut)
         {
