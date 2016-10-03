@@ -9,43 +9,30 @@
     <title>Text Expander</title>
   </head>
   <body>
+    <div class="container-fluid">
+        <h1>Text Expander</h1>
+            <form action="/new_snippet" method="post">
+                <h3>Shortcut</h3>
+                <input type="text" name="shortcut" required>
+                <br>
+                <h3>Text Input</h3>
+                <textarea cols="50" rows="5" id="txt1" name="text" required></textarea>
+                <br>
+                <button type="button" value="@#$1$#@" class="placeholder">Variable 1</button>
+                <button type="button" value="@#$2$#@" class="placeholder">Variable 2</button>
+                <button class="btn" type="submit">Generate</button>
+            </form>
+            <form action="/clear" method="post">
+                <button type="submit" name="button">Delete all shortcuts</button>
+            </form>
+<!-- SHORTCUTS -->
+            {% if snippets is not empty %}
+            <h3>Archived Shortcuts:</h3>
+                {% for snippet in snippets %}
+                <li><a href="/this_snippet/{{ snippet.getId }}">{{ snippet.getShortcut }}</a></li>
+                {% endfor %}
+            {% endif %}
+<!-- RESULTS -->
     </div>
-      <div class="container-fluid">
-          <div class="row">
-              <div class="col-md-6">
-                  <h1>Text Expander</h1>
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-md-4">
-                  <h3>Text Input</h3>
-                    <form action="/new_snippet" method="post">
-                        <textarea cols="50" rows="5" id="txt1"></textarea>
-                        <br>
-                        <button type="button" value="@#$1$#@" class="placeholder">Variable 1</button>
-                        <button type="button" value="@#$2$#@" class="placeholder">Variable 2</button>
-              </div>
-              <div class="col-md-4">
-                  <h3>Shortcut</h3>
-                       <input type="text" name="shortcut">
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-md-6">
-                        <button class="btn" type="submit">Generate</button>
-                  </form>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      {% if snippets is not empty %}
-                        <h3>snippets:</h3>
-                        {% for snippet in snippets %}
-                        <li><a href="/new_snippet/{{ snippet.getId }}">{{ snippet.getShortcut }}</a></li>
-                        {% endfor %}
-                      {% endif %}
-                  </div>
-              </div>
-          </div>
-      </div>
   </body>
 </html>

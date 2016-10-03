@@ -56,10 +56,16 @@
         return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll()));
     });
 
+    //delete all snippets
+    $app->post("/clear", function() use ($app) {
+        Snippet::deleteAll();
+        return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll()));
+    });
+
     // show snippet
     $app->get("/this_snippet/{id}", function($id) use ($app) {
         $snippet = Snippet::find($id);
-        return $app['twig']->render('shortcut.html.twig', array('snippets' => $snippet));
+        return $app['twig']->render('snippet.html.twig', array('snippets' => $snippet));
     });
 
     
