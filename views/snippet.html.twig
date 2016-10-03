@@ -1,0 +1,31 @@
+<html>
+  <head>
+      <link href='css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+      <link href='css/bootstrap-theme.min.css' rel='stylesheet' type='text/css'>
+      <link href='css/styles.css' rel='stylesheet' type='text/css'>
+      <script src='js/jquery-3.1.0.js'></script>
+      <script src='js/bootstrap.min.js' type='text/javascript'></script>
+      <script src='js/scripts.js'></script>
+    <title>Text Expander</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+        <h1>Text Expander</h1>
+
+        <div>
+            <p>
+            Text with readable placeholders and their variable numbers here.
+            </p>
+        </div>
+
+        <div>
+            {% if variables is not empty %}
+            {% for variable in variables %}
+
+            {% endfor %}
+            {% endif %}
+        </div>
+<!-- RESULTS -->
+    </div>
+  </body>
+</html>
