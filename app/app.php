@@ -30,7 +30,7 @@
 
     // get text input and shortcut input
 
-    $app->get("/snippets", function() use ($app) {
+    $app->post("/snippets", function() use ($app) {
         $shortcut = $_POST[];
         $text = $_POST[];
         $new_snippet = new Snippet($shortcut, $text);
