@@ -56,7 +56,7 @@
 
         function delete()
         {
-
+            $GLOBALS['DB']->exec("DELETE FROM snippets WHERE id = {$this->id};");
         }
 
 //--getters and setters--
