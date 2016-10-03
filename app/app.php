@@ -3,17 +3,17 @@
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/Snippet.php";
 
-    // //Epicodus
-    // $server = 'mysql:host=localhost;dbname=expander_test';
-    // $username = 'root';
-    // $password = 'root';
-    // $DB = new PDO($server, $username, $password);
-
-    // home mac
-    $server = 'mysql:host=localhost:8889;dbname=expander';
+    //Epicodus
+    $server = 'mysql:host=localhost;dbname=expander_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
+
+    //home mac
+    // $server = 'mysql:host=localhost:8889;dbname=expander_test';
+    // $username = 'root';
+    // $password = 'root';
+    // $DB = new PDO($server, $username, $password);
 
     $app = new Silex\Application();
 
@@ -28,13 +28,10 @@
       return $app['twig']->render("home.html.twig");
     });
 
-    // get text input and shortcut input
-
-
-
-    // post text input and shortcut input
-
-    
+  //loads basic php
+    $app->get("/test", function() use ($app) {
+      return 'test variables here';
+    });
 
     return $app;
 ?>
