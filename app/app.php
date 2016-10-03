@@ -1,24 +1,19 @@
 <?php
     date_default_timezone_set('America/Los_Angeles');
     require_once __DIR__."/../vendor/autoload.php";
-    require_once __DIR__."/../src/template.php";
+    require_once __DIR__."/../src/Snippet.php";
 
     //Epicodus
-    $server = 'mysql:host=localhost;dbname=best_restaurants_test';
+    $server = 'mysql:host=localhost;dbname=expander_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
     //home mac
-    // $server = 'mysql:host=localhost:8889;dbname=best_restaurants';
+    // $server = 'mysql:host=localhost:8889;dbname=expander_test';
     // $username = 'root';
     // $password = 'root';
     // $DB = new PDO($server, $username, $password);
-
-    // session_start();
-    // if (empty($_SESSION['collection'])) {
-    //     $_SESSION['collection'] = array();
-    // }
 
     $app = new Silex\Application();
 

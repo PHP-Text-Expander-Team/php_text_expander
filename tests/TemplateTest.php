@@ -7,17 +7,17 @@
 
     require_once "src/Template.php";
 
-    //Epicodus
-    $server = 'mysql:host=localhost;dbname=best_restaurants_test';
-    $username = 'root';
-    $password = 'root';
-    $DB = new PDO($server, $username, $password);
-
-    //home mac
-    // $server = 'mysql:host=localhost:8889;dbname=best_restaurants';
+    // //Epicodus
+    // $server = 'mysql:host=localhost;dbname=best_restaurants_test';
     // $username = 'root';
     // $password = 'root';
     // $DB = new PDO($server, $username, $password);
+
+    home mac
+    $server = 'mysql:host=localhost:8889;dbname=best_restaurants';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);
 
     class TemplateTest extends PHPUnit_Framework_TestCase
 
