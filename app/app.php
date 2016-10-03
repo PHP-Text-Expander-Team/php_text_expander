@@ -61,5 +61,7 @@
         $snippet = Snippet::find($id);
         return $app['twig']->render('shortcut.html.twig', array('snippets' => $snippet));
     });
+
+    
     return $app;
 ?>
