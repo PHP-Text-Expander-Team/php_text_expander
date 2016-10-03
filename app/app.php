@@ -15,11 +15,6 @@
     // $password = 'root';
     // $DB = new PDO($server, $username, $password);
 
-    // session_start();
-    // if (empty($_SESSION['collection'])) {
-    //     $_SESSION['collection'] = array();
-    // }
-
     $app = new Silex\Application();
 
     $app['debug'] = true;
