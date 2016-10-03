@@ -12,15 +12,19 @@
 
     <div class="container-fluid">
         <h1>Text Expander</h1>
-        <h3>Text Input</h3>
             <form action="/new_snippet" method="post">
-                <textarea cols="50" rows="5" id="txt1"></textarea>
+                <h3>Shortcut</h3>
+                <input type="text" name="shortcut" required>
+                <br>
+                <h3>Text Input</h3>
+                <textarea cols="50" rows="5" id="txt1" name="text" required></textarea>
                 <br>
                 <button type="button" value="@#$1$#@" class="placeholder">Variable 1</button>
                 <button type="button" value="@#$2$#@" class="placeholder">Variable 2</button>
-                <h3>Shortcut</h3>
-                <input type="text" name="shortcut">
                 <button class="btn" type="submit">Generate</button>
+            </form>
+            <form action="/clear" method="post">
+                <button type="submit" name="button">Delete all shortcuts</button>
             </form>
 <!-- SHORTCUTS -->
             {% if snippets is not empty %}
