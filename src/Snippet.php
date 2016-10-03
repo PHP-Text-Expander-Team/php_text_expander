@@ -34,16 +34,16 @@
 
         static function find($search_id)
         {
-            // $found_snippet = null;
-            // $snippets = Snippet::getAll();
-            //
-            // foreach($snippets as $snippet) {
-            //     $snippet_id = $snippet->getId();
-            //     if ($snippet_id == $search_id) {
-            //         $found_snippet = $snippet;
-            //     }
-            // }
-            // return $found_snippet;
+            $found_snippet = null;
+            $snippets = Snippet::getAll();
+
+            foreach($snippets as $snippet) {
+                $snippet_id = $snippet->getId();
+                if ($snippet_id == $search_id) {
+                    $found_snippet = $snippet;
+                }
+            }
+            return $found_snippet;
         }
 
 //--regular functions--
