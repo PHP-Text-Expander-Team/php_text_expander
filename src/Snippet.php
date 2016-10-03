@@ -59,9 +59,16 @@
             $GLOBALS['DB']->exec("DELETE FROM snippets WHERE id = {$this->id};");
         }
 
-        function update()
+        function updateShortcut($shortcut)
         {
-            
+            $this->shortcut = $shortcut;
+            $GLOBALS['DB']->exec("UPDATE snippets SET shortcut = '{$this->shortcut}' WHERE id = {$this->getId()};");
+        }
+
+        function updateText($text)
+        {
+            $this->text = $text;
+            $GLOBALS['DB']->exec("UPDATE snippets SET text = '{$this->text}' WHERE id = {$this->getId()};");
         }
 
 //--getters and setters--
