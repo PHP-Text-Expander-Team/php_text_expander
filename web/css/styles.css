@@ -1,8 +1,8 @@
-#p1 {
-  color: red;
+body {
+    /*background-color: #FF3232;*/
 }
 
-#button {
-  margin-left: 45%;
-  margin-top: 20%;
+.btn {
+    background-color: #fff;
+    border: 2px solid #000;
 }
