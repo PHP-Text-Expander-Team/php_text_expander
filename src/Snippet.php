@@ -73,6 +73,7 @@
 
         function getPlaceHolders($text)
         {
+
             $placeholder_array = array();
             $search_array = explode(" ", $text);
             $pattern = "/(@!!@)(\d|\d\d)(@!!@)/";
@@ -94,6 +95,10 @@
 
         //add variable property to text input that stores the number of variables in an array
         //
+            // $placeholder_array = array();
+            // preg_match("(@!!@)(\d|\d\d)(@!!@)")
+
+            //remember strstr() and substr_count as possibilities for getting # of variables
 
 //--getters and setters--
         function setShortcut($shortcut)

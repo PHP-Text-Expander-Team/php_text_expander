@@ -11,28 +11,24 @@
   <body>
     <div class="container-fluid">
         <h1>Text Expander</h1>
-
-        <h2>{{ snippet.getShortcut }}</h2>
-
+        <h2>Update Snippet</h2>
         <div>
-            <p>
-            {{ snippet.getText }}
-            </p>
-        </div>
-
-        <div>
-            {% if placeholders is not empty %}
-            {% for placeholder in placeholders %}
-            <form action="/add_variables/{{ snippet.getId }}" method="post">
-                <label for="{{ placeholder }}"></label>
-                <input type="text" name="{{ placeholder }}">
+            <form action="/update_shortcut/{{ snippet.getId }}" method="post">
+                <input type="hidden" name="_method" value="patch">
+                <label for="shortcut update">Update:</label>
+                <input type="text" name="new_shortcut">
                 <button type="submit">Submit</button>
             </form>
-            {% endfor %}
-            {% endif %}
+        </div>
+        <div>
+            <form action="/update_text/{{ snippet.getId }}" method="post">
+                <input type="hidden" name="_method" value="patch">
+                <label for="text update">Update:</label>
+                <input type="text" name="new_text">
+                <button type="submit">Submit</button>
+            </form>
         </div>
 <!-- RESULTS -->
     </div>
-    <a href="/update/{{ snippet.getId }}">Update</a>
   </body>
 </html>

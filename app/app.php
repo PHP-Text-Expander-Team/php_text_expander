@@ -39,14 +39,34 @@
         $new_snippet = new Snippet($shortcut, $text);
         $new_snippet->save();
         return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll()));
+    });
 
-    // update snippet
-    $app->patch("/update_snippet/{id}", function($id) use ($app) {
-        $new_snippet = $_POST['new_snippet'];
+    $app->get("/update/{id}", function($id) use ($app) {
         $snippet = Snippet::find($id);
-        $snippet->update($new_snippet);
-        return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll()));
-        });
+        return $app['twig']->render('update.html.twig', array('snippet' => $snippet));
+    });
+
+    // update shortcut
+    $app->patch("/update_shortcut/{id}", function($id) use ($app) {
+        $new_shortcut = $_POST['new_shortcut'];
+        $snippet = Snippet::find($id);
+        $snippet->updateShortcut($new_shortcut);
+        return $app['twig']->render('snippet.html.twig', array('snippet' => $snippet, 'placeholders' => $snippet_placeholders));
+    });
+
+    // update text
+    $app->patch("/update_text/{id}", function($id) use ($app) {
+        $new_text = $_POST['new_text'];
+        $snippet = Snippet::find($id);
+        $snippet->updateText($new_text);
+        return $app['twig']->render('snippet.html.twig', array('snippet' => $snippet, 'placeholders' => $snippet_placeholders));
+    });
+
+    $app->post("/add_variables/{id}", function($id) use ($app) {
+        $snippet = Snippet::find($id);
+        $snippet_text = $snippet->getText();
+        $snippet_placeholders = $snippet->getPlaceHolders($snippet_text);
+        return $app['twig']->render('snippet.html.twig', array('snippet' => $snippet, 'placeholders' => $snippet_placeholders));
     });
 
     // delete snippet
@@ -65,7 +85,9 @@
     // show snippet
     $app->get("/this_snippet/{id}", function($id) use ($app) {
         $snippet = Snippet::find($id);
-        return $app['twig']->render('snippet.html.twig', array('snippet' => $snippet));
+        $snippet_text = $snippet->getText();
+        $snippet_placeholders = $snippet->getPlaceHolders($snippet_text);
+        return $app['twig']->render('snippet.html.twig', array('snippet' => $snippet, 'placeholders' => $snippet_placeholders));
     });
     return $app;
 ?>
