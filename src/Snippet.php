@@ -75,7 +75,7 @@
         {
 
             $placeholder_array = array();
-            $search_array = explode(" ", $text);
+            $search_array = explode("||||", $text);
             $pattern = "/(@!!@)(\d|\d\d)(@!!@)/";
 
             for ($i = 0; $i < count($search_array) ; $i++)

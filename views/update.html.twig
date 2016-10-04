@@ -16,7 +16,7 @@
             <form action="/update_shortcut/{{ snippet.getId }}" method="post">
                 <input type="hidden" name="_method" value="patch">
                 <label for="shortcut update">Update:</label>
-                <input type="text" name="new_shortcut">
+                <textarea cols="10" rows="1" id="txt1" name="text" required>{{ snippet.getShortcut }}</textarea>
                 <button type="submit">Submit</button>
             </form>
         </div>
@@ -24,11 +24,11 @@
             <form action="/update_text/{{ snippet.getId }}" method="post">
                 <input type="hidden" name="_method" value="patch">
                 <label for="text update">Update:</label>
-                <input type="text" name="new_text">
+                <textarea cols="100" rows="40" id="txt1" name="text" required>{{ snippet.getText }}</textarea>
                 <button type="submit">Submit</button>
             </form>
         </div>
-<!-- RESULTS -->
+        <a href="/">Home</a>
     </div>
   </body>
 </html>
