@@ -3,11 +3,13 @@
     {
         private $user_name;
         private $password;
+        private $email;
 
-        function __construct($user_name, $password)
+        function __construct($user_name, $password, $email)
         {
             $this->user_name = $user_name;
             $this->password = $password;
+            $this->email = $email;
         }
 //--static functions--
 
@@ -18,7 +20,8 @@
             foreach($returned_users as $user) {
                 $user_name = $user['user_name'];
                 $password = $user['password'];
-                $new_user = new User($user_name, $password);
+                $email = $user['email']
+                $new_user = new User($user_name, $password, $email);
                 array_push($users, $new_user);
             }
             return $users;
@@ -80,6 +83,11 @@
             $this->password = $password;
         }
 
+        function setEmail($email)
+        {
+            $this->email = $email;
+        }
+
         function getUserName()
         {
             return $this->user_name;
@@ -88,6 +96,11 @@
         function getPassword()
         {
             return $this->password;
+        }
+
+        function getEmail()
+        {
+            return $this->email;
         }
 
         function getId()
