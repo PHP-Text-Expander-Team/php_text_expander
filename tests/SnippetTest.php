@@ -137,21 +137,6 @@
 
             $this->assertEquals([$new_snippet], $result);
         }
-
-        function test_snippet_getPlaceHolders()
-        {
-            //refactor if we get to it to not use ||||
-            $shortcut = ";letter";
-            $text = "Hi there ||||@!!@1@!!@|||| is your name really ||||@!!@1@!!@||||? Thats ||||@!!@2@!!@||||";
-            $new_snippet = new Snippet ($shortcut, $text);
-            $new_snippet->save();
-
-            $result = $new_snippet->getPlaceHolders($text);
-
-            var_dump($result);
-
-            $this->assertEquals(["@!!@1@!!@", "@!!@2@!!@"],$result);
-        }
    }
 
  ?>

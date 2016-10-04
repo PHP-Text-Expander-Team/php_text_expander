@@ -51,7 +51,7 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO snippets (shortcut, text) VALUES ('{$this->getShortcut()}', '{$this->getText()}';");
+            $GLOBALS['DB']->exec("INSERT INTO snippets (shortcut, text) VALUES ('{$this->getShortcut()}', '{$this->getText()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
