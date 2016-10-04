@@ -78,7 +78,7 @@
 
             //remember strstr() and substr_count as possibilities for getting # of variables
 
-            // return $placeholder_array;
+            return array("Poo", "Doo");
         }
 
 //--getters and setters--
