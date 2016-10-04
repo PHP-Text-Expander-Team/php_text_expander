@@ -8,16 +8,16 @@
     require_once "src/Snippet.php";
 
     //Epicodus
-    $server = 'mysql:host=localhost;dbname=expander_test';
-    $username = 'root';
-    $password = 'root';
-    $DB = new PDO($server, $username, $password);
-
-    //home mac
-    // $server = 'mysql:host=localhost:8889;dbname=expander_test';
+    // $server = 'mysql:host=localhost;dbname=expander_test';
     // $username = 'root';
     // $password = 'root';
     // $DB = new PDO($server, $username, $password);
+
+    //home mac
+    $server = 'mysql:host=localhost:8889;dbname=expander_test';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);
 
     class snippet_test extends PHPUnit_Framework_TestCase
 
@@ -151,7 +151,7 @@
             $this->assertEquals(["@!!@1@!!@", "@!!@2@!!@"],$result);
         }
 
-        function test_getNumberOfVariables()
+        function test_snippit_getNumberOfVariables()
         {
             $shortcut = ";letter";
             $text = "Hi there ||||@!!@1@!!@|||| is your name really ||||@!!@1@!!@||||? Thats ||||@!!@2@!!@||||";
@@ -161,10 +161,22 @@
 
             $result = $new_snippet->getNumberOfVariables();
 
-            var_dump($result);
-
             $this->assertEquals($number_of_variables,$result);
         }
+
+        // function test_snippet_replacePlaceHolders()
+        // {
+        //     $shortcut = ";letter";
+        //     $text = "Hi there ||||@!!@1@!!@|||| is your name really ||||@!!@1@!!@||||? Thats ||||@!!@2@!!@||||";
+        //     $number_of_variables = 3;
+        //     $new_snippet = new Snippet ($shortcut, $text, $number_of_variables);
+        //     $new_snippet->save();
+        //     $placeholder_array = ["Bob","crazy"];
+        //
+        //     $result = $new_snippet->replacePlaceHolders($new_snippet->getText(), $placeholder_array);
+        //
+        //     $this->assertEquals("Hi there Bob is your name really Bob? Thats crazy",$result);
+        // }
 
 
       // Testcode example

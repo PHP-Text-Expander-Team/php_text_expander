@@ -76,7 +76,7 @@
 
         function getPlaceHolders($text)
         {
-
+            //make associative?
             $placeholder_array = array();
             $search_array = explode("||||", $text);
             $pattern = "/(@!!@)(\d|\d\d)(@!!@)/";
@@ -88,7 +88,13 @@
                     array_push($placeholder_array, $search_array[$i]);
                 }
             }
-            return array_unique($placeholder_array);
+            $placeholder_array = array_unique($placeholder_array);
+            $i = 0;
+            foreach ($placeholder_array as $key => $placeholder) {
+                $i ++;
+                $placeholder = "||||@!!@" . $i . "@!!@||||";
+            }
+            return $placeholder_array;
         }
 
         function replacePlaceHolders($text, $array)
@@ -96,16 +102,17 @@
             $text_array = explode(" ", $text);
             for ($i = 0; $i < count($text_array); $i++)
             {
-                if ($text_array[$i] == "/(||||@!!@)(\d|\d\d)(@!!@||||)/")
+                if ($text_array[$i] = "/(||||@!!@)(\d|\d\d)(@!!@||||)/")
                 {
-                    $location = substr($text_array[$i],0, -8);
-                    $text_array[$i] == $array[$location];
+                    $location = 1;
+                    $text_array[$i] = $array[$location];
                 }
             $final_text = implode($text_array);
             }
             return $final_text;
         }
 
+// "/(||||@!!@)(\d|\d\d)(@!!@||||)/"
 //
 // "Hi there @!!@1@!!@ is your name really @!!@1@!!@? Thats @!!@2@!!@"
         //break sentence into array, loop through array length. if i = regex search, push i to array
