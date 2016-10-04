@@ -6,6 +6,7 @@
     */
 
     require_once "src/Snippet.php";
+    require_once "src/Variable.php";
 
     //Epicodus
     $server = 'mysql:host=localhost;dbname=expander_test';
@@ -30,6 +31,7 @@
         protected function teardown()
         {
             Snippet::deleteAll();
+            Variable::deleteAll();
         }
 
         function test_snippet_save()
@@ -134,36 +136,6 @@
             $result = Snippet::getAll();
 
             $this->assertEquals([$new_snippet], $result);
-        }
-
-        function test_snippet_getPlaceHolders()
-        {
-            //refactor if we get to it to not use ||||
-            $shortcut = ";letter";
-            $text = "Hi there ||||@!!@1@!!@|||| is your name really ||||@!!@1@!!@||||? Thats ||||@!!@2@!!@||||";
-            $new_snippet = new Snippet ($shortcut, $text);
-            $new_snippet->save();
-
-            $result = $new_snippet->getPlaceHolders($text);
-
-            var_dump($result);
-
-            $this->assertEquals(["@!!@1@!!@", "@!!@2@!!@"],$result);
-        }
-
-        function test_getNumberOfVariables()
-        {
-            $shortcut = ";letter";
-            $text = "Hi there ||||@!!@1@!!@|||| is your name really ||||@!!@1@!!@||||? Thats ||||@!!@2@!!@||||";
-            $number_of_variables = 3;
-            $new_snippet = new Snippet ($shortcut, $text, $number_of_variables);
-            $new_snippet->save();
-
-            $result = $new_snippet->getNumberOfVariables();
-
-            var_dump($result);
-
-            $this->assertEquals($number_of_variables,$result);
         }
 
 
