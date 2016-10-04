@@ -150,6 +150,23 @@
 
             $this->assertEquals(["@!!@1@!!@", "@!!@2@!!@"],$result);
         }
+
+        function test_getNumberOfVariables()
+        {
+            $shortcut = ";letter";
+            $text = "Hi there ||||@!!@1@!!@|||| is your name really ||||@!!@1@!!@||||? Thats ||||@!!@2@!!@||||";
+            $number_of_variables = 3;
+            $new_snippet = new Snippet ($shortcut, $text, $number_of_variables);
+            $new_snippet->save();
+
+            $result = $new_snippet->getNumberOfVariables();
+
+            var_dump($result);
+
+            $this->assertEquals($number_of_variables,$result);
+        }
+
+
       // Testcode example
       //  function test_makeTitleCase_oneWord()
       //  {
