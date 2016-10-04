@@ -36,9 +36,8 @@
 
         function test_variable_save()
         {
-            $snippet_id = 1;
             $number = 1;
-            $new_variable = new Variable ($snippet_id, $number);
+            $new_variable = new Variable ($number);
             $new_variable->save();
 
             $result = Variable::getAll();
@@ -48,14 +47,12 @@
 
         function test_variable_getAll()
         {
-            $snippet_id = 1;
             $number = 1;
-            $new_variable = new Variable ($snippet_id, $number);
+            $new_variable = new Variable ($number);
             $new_variable->save();
 
-            $snippet_id2 = 1;
             $number2 = 1;
-            $new_variable2 = new Variable ($snippet_id2, $number2);
+            $new_variable2 = new Variable ($number2);
             $new_variable2->save();
 
             $result = Variable::getAll();
@@ -65,14 +62,12 @@
 
         function test_variable_deleteAll()
         {
-            $snippet_id = 1;
             $number = 1;
-            $new_variable = new Variable ($snippet_id, $number);
+            $new_variable = new Variable ($number);
             $new_variable->save();
 
-            $snippet_id2 = 1;
             $number2 = 1;
-            $new_variable2 = new Variable ($snippet_id2, $number2);
+            $new_variable2 = new Variable ($number2);
             $new_variable2->save();
 
             Variable::deleteAll();
@@ -83,14 +78,12 @@
 
         function test_snippet_delete()
         {
-            $snippet_id = 1;
             $number = 1;
-            $new_variable = new Variable ($snippet_id, $number);
+            $new_variable = new Variable ($number);
             $new_variable->save();
 
-            $snippet_id2 = 1;
             $number2 = 1;
-            $new_variable2 = new Variable ($snippet_id2, $number2);
+            $new_variable2 = new Variable ($number2);
             $new_variable2->save();
 
             $new_variable2->delete();
@@ -101,9 +94,8 @@
 
         function test_getNumber()
         {
-            $snippet_id = 1;
             $number = 1;
-            $new_variable = new Variable ($snippet_id, $number);
+            $new_variable = new Variable ($number);
             $new_variable->save();
 
             $result = $new_variable->getNumber();

@@ -5,7 +5,7 @@
         private $snippet_id;
         private $number;
 
-        function __construct($snippet_id, $number, $id = null)
+        function __construct($number, $snippet_id = null, $id = null)
         {
             $this->snippet_id = $snippet_id;
             $this->number = $number;
@@ -21,7 +21,7 @@
                 $id = $variable['id'];
                 $snippet_id = $variable['snippet_id'];
                 $number = $variable['number'];
-                $new_variable = new Variable($snippet_id, $number, $id);
+                $new_variable = new Variable($number, $snippet_id, $id);
                 array_push($variables, $new_variable);
             }
             return $variables;
@@ -36,7 +36,7 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO variables (snippet_id, number) VALUES ({$this->getSnippetId()}, {$this->getNumber()});");
+            $GLOBALS['DB']->exec("INSERT INTO variables (number) VALUES ({$this->getNumber()});");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
