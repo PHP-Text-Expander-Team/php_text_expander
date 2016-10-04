@@ -19,9 +19,13 @@
         </div>
 
         <div>
-            {% if variables is not empty %}
-            {% for variable in variables %}
-
+            {% if placeholders is not empty %}
+            {% for placeholder in placeholders %}
+            <form action="/add_variables/{{ snippet.getId }}" method="post">
+                <label for="{{ placeholder }}"></label>
+                <input type="text" name="{{ placeholder }}">
+                <button type="submit">Submit</button>
+            </form>
             {% endfor %}
             {% endif %}
         </div>

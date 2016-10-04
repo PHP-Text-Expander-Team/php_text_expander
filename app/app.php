@@ -4,20 +4,20 @@
     require_once __DIR__."/../src/Snippet.php";
 
     // //Epicodus
-    // $server = 'mysql:host=localhost;dbname=expander';
-    // $username = 'root';
-    // $password = 'root';
-    // $DB = new PDO($server, $username, $password);
+    $server = 'mysql:host=localhost;dbname=expander';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);
 
 
     use Symfony\Component\HttpFoundation\Request;
     Request::enableHttpMethodParameterOverride();
 
     // home mac
-    $server = 'mysql:host=localhost:8889;dbname=expander';
-    $username = 'root';
-    $password = 'root';
-    $DB = new PDO($server, $username, $password);
+    // $server = 'mysql:host=localhost:8889;dbname=expander';
+    // $username = 'root';
+    // $password = 'root';
+    // $DB = new PDO($server, $username, $password);
 
     $app = new Silex\Application();
 
@@ -65,7 +65,9 @@
     // show snippet
     $app->get("/this_snippet/{id}", function($id) use ($app) {
         $snippet = Snippet::find($id);
-        return $app['twig']->render('snippet.html.twig', array('snippet' => $snippet));
+        $snippet_text = $snippet->getText();
+        $snippet_placeholders = $snippet->getPlaceHolders($snippet_text);
+        return $app['twig']->render('snippet.html.twig', array('snippet' => $snippet, 'placeholders' => $snippet_placeholders));
     });
     return $app;
 ?>
