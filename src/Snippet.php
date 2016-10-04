@@ -71,15 +71,29 @@
             $GLOBALS['DB']->exec("UPDATE snippets SET text = '{$this->text}' WHERE id = {$this->getId()};");
         }
 
-        // function getPlaceHolders($text)
-        // {
-        //     $placeholder_array = array();
-        //     preg_match("(@!!@)(\d|\d\d)(@!!@)")
+        function getPlaceHolders($text)
+        {
+            $placeholder_array = array();
+            $search_array = explode(" ", $text);
+            $pattern = "/(@!!@)(\d|\d\d)(@!!@)/";
+
+            for ($i = 0; $i < count($search_array) ; $i++)
+            {
+                if (preg_match($pattern, $search_array[$i]))
+                {
+                    array_push($placeholder_array, $search_array[$i]);
+                }
+            }
+            return array_unique($placeholder_array);
+        }
+
+//
+// "Hi there @!!@1@!!@ is your name really @!!@1@!!@? Thats @!!@2@!!@"
+        //break sentence into array, loop through array length. if i = regex search, push i to array
+        //remember strstr() and substr_count as possibilities for getting # of variables
+
+        //add variable property to text input that stores the number of variables in an array
         //
-        //     //remember strstr() and substr_count as possibilities for getting # of variables
-        //
-        //     return $placeholder_array;
-        // }
 
 //--getters and setters--
         function setShortcut($shortcut)
