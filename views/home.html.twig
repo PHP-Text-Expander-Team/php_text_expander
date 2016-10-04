@@ -12,6 +12,7 @@
 
     <div class="container-fluid">
         <h1>Text Expander</h1>
+
             <form action="/new_snippet" method="post">
                 <h3>Shortcut</h3>
                 <input type="text" name="shortcut" required>
@@ -19,27 +20,33 @@
                 <h3>Text Input</h3>
                 <textarea cols="50" rows="5" id="txt1" name="text" required></textarea>
                 <br>
-            <form action="/" method="post">
-                <h3># of Variable Fields</h3>
-                <input type="text">
-                <br>
-            </form>
-                <!-- <button type="button" value="||||@!!@1@!!@||||" class="placeholder">Variable 1</button>
-                <button type="button" value="||||@!!@2@!!@||||" class="placeholder">Variable 2</button> -->
+
                 <button class="btn" type="submit">Generate</button>
                 <br>
             </form>
+
+
+                {% for i in range(1, variables) %}
+                <button type="button" value="||||@!!@{{ i }}@!!@||||" class="placeholder">Variable {{ i }}</button>
+                {% endfor %}
+
+            <form action="/create_variables" method="post">
+                <h3># of Variable Fields</h3>
+                <input type="number" name="number_of_variables">
+                <br>
+                <button class="btn" type="submit">Add Variables</button>
+            </form>
+
             <form action="/clear" method="post">
                 <button class="btn" type="submit" name="button">Delete all shortcuts</button>
             </form>
-<!-- SHORTCUTS -->
+
             {% if snippets is not empty %}
             <h3>Archived Shortcuts:</h3>
                 {% for snippet in snippets %}
                 <li><a href="/this_snippet/{{ snippet.getId }}">{{ snippet.getShortcut }}</a></li>
                 {% endfor %}
             {% endif %}
-<!-- RESULTS -->
     </div>
   </body>
 </html>

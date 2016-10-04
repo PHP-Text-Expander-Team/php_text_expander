@@ -6,6 +6,7 @@
     */
 
     require_once "src/Snippet.php";
+    require_once "src/Variable.php";
 
     //Epicodus
     $server = 'mysql:host=localhost;dbname=expander_test';
@@ -19,7 +20,7 @@
     // $password = 'root';
     // $DB = new PDO($server, $username, $password);
 
-    class snippet_test extends PHPUnit_Framework_TestCase
+    class Snippet_test extends PHPUnit_Framework_TestCase
 
     //run test in terminal: ./vendor/bin/phpunit tests
 
@@ -30,6 +31,7 @@
         protected function teardown()
         {
             Snippet::deleteAll();
+            Variable::deleteAll();
         }
 
         function test_snippet_save()
@@ -150,36 +152,6 @@
 
             $this->assertEquals(["@!!@1@!!@", "@!!@2@!!@"],$result);
         }
-
-        function test_getNumberOfVariables()
-        {
-            $shortcut = ";letter";
-            $text = "Hi there ||||@!!@1@!!@|||| is your name really ||||@!!@1@!!@||||? Thats ||||@!!@2@!!@||||";
-            $number_of_variables = 3;
-            $new_snippet = new Snippet ($shortcut, $text, $number_of_variables);
-            $new_snippet->save();
-
-            $result = $new_snippet->getNumberOfVariables();
-
-            var_dump($result);
-
-            $this->assertEquals($number_of_variables,$result);
-        }
-
-
-      // Testcode example
-      //  function test_makeTitleCase_oneWord()
-      //  {
-      //      //Arrange
-      //      $test_TitleCaseGenerator = new Template;
-      //      $input = "beowulf";
-       //
-      //      //Act
-      //      $result = $test_TitleCaseGenerator->testTemplate($input);
-       //
-      //      //Assert
-      //      $this->assertEquals("Beowulf", $result);
-      //  }
    }
 
  ?>

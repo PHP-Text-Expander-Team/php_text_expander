@@ -4,13 +4,11 @@
         private $id;
         private $shortcut;
         private $text;
-        private $number_of_variables;
 
-        function __construct($shortcut, $text, $number_of_variables = 0, $id = null)
+        function __construct($shortcut, $text, $id = null)
         {
             $this->shortcut = $shortcut;
             $this->text = $text;
-            $this->number_of_variables = $number_of_variables;
             $this->id = $id;
         }
 //--static functions--
@@ -22,9 +20,8 @@
             foreach($returned_snippets as $snippet) {
                 $id = $snippet['id'];
                 $shortcut = $snippet['shortcut'];
-                $number_of_variables = $snippet['number_of_variables'];
                 $text = $snippet['text'];
-                $new_snippet = new Snippet($shortcut, $text, $number_of_variables, $id);
+                $new_snippet = new Snippet($shortcut, $text, $id);
                 array_push($snippets, $new_snippet);
             }
             return $snippets;
@@ -33,6 +30,7 @@
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM snippets;");
+            $GLOBALS['DB']->exec("DELETE FROM variables;");
         }
 
         static function find($search_id)
@@ -53,13 +51,14 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO snippets (shortcut, text, number_of_variables) VALUES ('{$this->getShortcut()}', '{$this->getText()}', {$this->getNumberOfVariables()});");
+            $GLOBALS['DB']->exec("INSERT INTO snippets (shortcut, text) VALUES ('{$this->getShortcut()}', '{$this->getText()}';");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
         function delete()
         {
             $GLOBALS['DB']->exec("DELETE FROM snippets WHERE id = {$this->id};");
+            $GLOBALS['DB']->exec("DELETE FROM variables WHERE snippet_id = {$this->id};");
         }
 
         function updateShortcut($shortcut)
@@ -91,18 +90,6 @@
             return array_unique($placeholder_array);
         }
 
-//
-// "Hi there @!!@1@!!@ is your name really @!!@1@!!@? Thats @!!@2@!!@"
-        //break sentence into array, loop through array length. if i = regex search, push i to array
-        //remember strstr() and substr_count as possibilities for getting # of variables
-
-        //add variable property to text input that stores the number of variables in an array
-        //
-            // $placeholder_array = array();
-            // preg_match("(@!!@)(\d|\d\d)(@!!@)")
-
-            //remember strstr() and substr_count as possibilities for getting # of variables
-
 //--getters and setters--
         function setShortcut($shortcut)
         {
@@ -127,16 +114,6 @@
         function getId()
         {
             return $this->id;
-        }
-
-        function getNumberOfVariables()
-        {
-            return $this->number_of_variables;
-        }
-
-        function setNumberOfVariables($number_of_variables)
-        {
-            $this->number_of_variables = $number_of_variables;
         }
 
     }

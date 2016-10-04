@@ -2,6 +2,7 @@
     date_default_timezone_set('America/Los_Angeles');
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/Snippet.php";
+    require_once __DIR__."/../src/Variable.php";
 
     // //Epicodus
     $server = 'mysql:host=localhost;dbname=expander';
@@ -33,12 +34,17 @@
     });
 
     // post text input and shortcut input
-    $app->post("new_snippet", function() use ($app) {
+    $app->post("/new_snippet", function() use ($app) {
         $shortcut = $_POST['shortcut'];
         $text = $_POST['text'];
         $new_snippet = new Snippet($shortcut, $text);
         $new_snippet->save();
-        return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll()));
+        return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll(), 'variables' => $new_snippet->getNumberOfVariables()));
+    });
+
+    $app->post("/create_variables", function() use ($app) {
+        $variables = $_POST['number_of_variables'];
+        return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll(), 'variables' => $variables));
     });
 
     $app->get("/update/{id}", function($id) use ($app) {
