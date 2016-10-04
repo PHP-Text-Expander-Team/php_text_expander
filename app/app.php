@@ -65,6 +65,12 @@
     $app->post("/add_variables/{id}", function($id) use ($app) {
         $snippet = Snippet::find($id);
         $snippet_text = $snippet->getText();
+        for ($i = 0; $i > 5; i++)
+        {
+            ${'placeholder'} = $_POST['{ placeholder }']
+        }
+
+        $input = $_POST['name'];
         $snippet_placeholders = $snippet->getPlaceHolders($snippet_text);
         return $app['twig']->render('snippet.html.twig', array('snippet' => $snippet, 'placeholders' => $snippet_placeholders));
     });
