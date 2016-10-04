@@ -95,5 +95,11 @@
         $snippet_placeholders = $snippet->getPlaceHolders($snippet_text);
         return $app['twig']->render('snippet.html.twig', array('snippet' => $snippet, 'placeholders' => $snippet_placeholders));
     });
+
+    // temporary login page
+    $app->get("/login", function() use ($app) {
+        return $app['twig']->render("login.html.twig");
+    });
+
     return $app;
 ?>
