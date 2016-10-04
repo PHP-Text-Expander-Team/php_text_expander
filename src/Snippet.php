@@ -91,25 +91,25 @@
             $i = 0;
             foreach ($placeholder_array as $key => $placeholder) {
                 $i ++;
-                $placeholder = "||||@!!@" . $i . "@!!@||||";
+                $key = "||||@!!@" . $i . "@!!@||||";
             }
             return $placeholder_array;
         }
 
-        function replacePlaceHolders($text, $array)
-        {
-            $text_array = explode(" ", $text);
-            for ($i = 0; $i < count($text_array); $i++)
-            {
-                if ($text_array[$i] = "/(||||@!!@)(\d|\d\d)(@!!@||||)/")
-                {
-                    $location = 1;
-                    $text_array[$i] = $array[$location];
-                }
-            $final_text = implode($text_array);
-            }
-            return $final_text;
-        }
+        // function replacePlaceHolders($text, $array)
+        // {
+        //     $text_array = explode(" ", $text);
+        //     for ($i = 0; $i < count($text_array); $i++)
+        //     {
+        //         if ($text_array[$i] = "/(||||@!!@)(\d|\d\d)(@!!@||||)/")
+        //         {
+        //             $location = 1;
+        //             $text_array[$i] = $array[$location];
+        //         }
+        //     $final_text = implode($text_array);
+        //     }
+        //     return $final_text;
+        // }
 
 // "/(||||@!!@)(\d|\d\d)(@!!@||||)/"
 //
