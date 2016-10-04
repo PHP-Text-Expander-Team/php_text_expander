@@ -19,12 +19,18 @@
                 <h3>Text Input</h3>
                 <textarea cols="50" rows="5" id="txt1" name="text" required></textarea>
                 <br>
-                <button type="button" value="||||@!!@1@!!@||||" class="placeholder">Variable 1</button>
-                <button type="button" value="||||@!!@2@!!@||||" class="placeholder">Variable 2</button>
+            <form action="/" method="post">
+                <h3># of Variable Fields</h3>
+                <input type="text">
+                <br>
+            </form>
+                <!-- <button type="button" value="||||@!!@1@!!@||||" class="placeholder">Variable 1</button>
+                <button type="button" value="||||@!!@2@!!@||||" class="placeholder">Variable 2</button> -->
                 <button class="btn" type="submit">Generate</button>
+                <br>
             </form>
             <form action="/clear" method="post">
-                <button type="submit" name="button">Delete all shortcuts</button>
+                <button class="btn" type="submit" name="button">Delete all shortcuts</button>
             </form>
 <!-- SHORTCUTS -->
             {% if snippets is not empty %}

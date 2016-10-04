@@ -4,11 +4,13 @@
         private $id;
         private $shortcut;
         private $text;
+        private $number_of_variables;
 
-        function __construct($shortcut, $text, $id = null)
+        function __construct($shortcut, $text, $number_of_variables = 0, $id = null)
         {
             $this->shortcut = $shortcut;
             $this->text = $text;
+            $this->number_of_variables = $number_of_variables;
             $this->id = $id;
         }
 //--static functions--
@@ -20,8 +22,9 @@
             foreach($returned_snippets as $snippet) {
                 $id = $snippet['id'];
                 $shortcut = $snippet['shortcut'];
+                $number_of_variables = $snippet['number_of_variables'];
                 $text = $snippet['text'];
-                $new_snippet = new Snippet($shortcut, $text, $id);
+                $new_snippet = new Snippet($shortcut, $text, $number_of_variables, $id);
                 array_push($snippets, $new_snippet);
             }
             return $snippets;
@@ -50,7 +53,7 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO snippets (shortcut, text) VALUES ('{$this->getShortcut()}', '{$this->getText()}');");
+            $GLOBALS['DB']->exec("INSERT INTO snippets (shortcut, text, number_of_variables) VALUES ('{$this->getShortcut()}', '{$this->getText()}', {$this->getNumberOfVariables()});");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
@@ -124,6 +127,16 @@
         function getId()
         {
             return $this->id;
+        }
+
+        function getNumberOfVariables()
+        {
+            return $this->number_of_variables;
+        }
+
+        function setNumberOfVariables($number_of_variables)
+        {
+            $this->number_of_variables = $number_of_variables;
         }
 
     }
