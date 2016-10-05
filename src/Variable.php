@@ -32,6 +32,20 @@
             $GLOBALS['DB']->exec("DELETE FROM variables;");
         }
 
+        static function find($search_id)
+        {
+            $found_variable = null;
+            $variables = Variable::getAll();
+
+            foreach($variables as $variable) {
+                $variable_id = $variable->getId();
+                if ($variable_id == $search_id) {
+                    $found_variable = $variable;
+                }
+            }
+            return $found_variable;
+        }
+
 //--regular functions--
 
         function save()

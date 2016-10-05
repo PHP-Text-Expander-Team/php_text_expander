@@ -42,9 +42,16 @@
         return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll(), 'variables' => $new_snippet->getNumberOfVariables()));
     });
 
-    $app->post("/create_variables", function() use ($app) {
+    $app->post("/create_variables/{id}", function($id) use ($app) {
         $variables = $_POST['number_of_variables'];
-        return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll(), 'variables' => $variables));
+
+        $new_variable = new Variable($variables);
+        $new_variable->save();
+
+        $variable_id = $new_variable->getId();
+        Variable::find($variable_id);
+
+        return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll(), 'variables' => $new_variable));
     });
 
     $app->get("/update/{id}", function($id) use ($app) {

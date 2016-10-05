@@ -30,14 +30,14 @@
             <button type="button" value="||||@!!@4@!!@||||" class="placeholder">Variable 4</button>
             <button type="button" value="||||@!!@5@!!@||||" class="placeholder">Variable 5</button> -->
 
-            <form action="/" method="post">
+            <form action="/create_variables" method="post">
                 <h3>Add Variables</h3>
                 <label for="number_of_variables">Number:</label>
                 <input type="number" name="number_of_variables" placeholder="0">
                 <button class="btn" type="submit">Add Variables</button>
             </form>
 
-            {% for i in range(1, variables) %}
+            {% for i in range(1, 2) %}
             <button type="button" value="||||@!!@{{ i }}@!!@||||" class="placeholder">Variable {{ i }}</button>
             {% endfor %}
 
