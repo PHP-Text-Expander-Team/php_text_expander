@@ -121,7 +121,6 @@
                 {
                     $location = (int) substr($text_array[$i], 4, 1) - 1;
                     $text_array[$i] = $array[$location];
-
                 }
             $final_text = implode($text_array);
             }
@@ -130,6 +129,8 @@
 
         function countvars($text)
         {
+            //user has to put in variables in order. display buttons as needed
+
             $text_array = explode("||||", $text);
             $pattern = "/(@!!@)(\d)(@!!@)/";
             $final_array = array();
@@ -137,13 +138,10 @@
             {
                 if (preg_match($pattern, $text_array[$i]))
                 {
-                    $location = (int) substr($text_array[$i], 4, 1) - 1;
-                    $text_array[$i] = $text_array[$location];
                     array_push($final_array, $text_array[$i]);
                 }
             }
-            var_dump(array_unique($final_array));
-            return count(array_unique($final_array));
+            return array_unique($final_array);
         }
 
 // "/(||||@!!@)(\d|\d\d)(@!!@||||)/"

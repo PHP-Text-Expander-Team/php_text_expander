@@ -21,10 +21,10 @@
         <div>
             <form action="/add_variables/{{ snippet.getId }}" method="post">
 
-                {% if placeholders is not empty %}
-                    {% for placeholder in placeholders %}
-                    <label for="{{ placeholder }}">Variable {{ loop.index }}</label>
-                    <input type="text" name="{{ placeholder }}" placeholder="{{ placeholder }}">
+                {% if snippetvars is not empty %}
+                    {% for snippetvar in snippetvars %}
+                    <label for="{{ snippetvar }}">Variable {{ loop.index }}</label>
+                    <input type="text" name="{{ snippetvar }}">
                     <br>
                     {% endfor %}
                 {% endif %}
@@ -32,6 +32,8 @@
             </form>
         </div>
 <!-- RESULTS -->
+    {{ finaltext }}
+<!-- NAVIGATION -->
     </div>
     <a href="/update/{{ snippet.getId }}">Update</a>
     <a href="/">Home</a>
