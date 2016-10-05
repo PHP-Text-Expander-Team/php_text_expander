@@ -14,9 +14,7 @@
 
         <h2>{{ snippet.getShortcut }}</h2>
 
-        <p>
-            {{ snippet.getText }}
-        </p>
+    <textarea cols="50" rows="20">{{ snippet.getText }}</textarea>
 
         <div>
             <form action="/add_variables/{{ snippet.getId }}" method="post">
@@ -32,7 +30,7 @@
             </form>
         </div>
 <!-- RESULTS -->
-    {{ finaltext }}
+    <textarea cols="50" rows="20">{{ finaltext }}</textarea>
 <!-- NAVIGATION -->
     </div>
     <a href="/update/{{ snippet.getId }}">Update</a>
