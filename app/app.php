@@ -10,15 +10,14 @@
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
-
-    use Symfony\Component\HttpFoundation\Request;
-    Request::enableHttpMethodParameterOverride();
-
     // home mac
     // $server = 'mysql:host=localhost:8889;dbname=expander';
     // $username = 'root';
     // $password = 'root';
     // $DB = new PDO($server, $username, $password);
+
+    use Symfony\Component\HttpFoundation\Request;
+    Request::enableHttpMethodParameterOverride();
 
     $app = new Silex\Application();
 
@@ -39,7 +38,7 @@
         $text = $_POST['text'];
         $new_snippet = new Snippet($shortcut, $text);
         $new_snippet->save();
-        return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll()));
+        return $app->redirect("/");
     });
 
     $app->post("/create_variables/{id}", function($id) use ($app) {
@@ -115,9 +114,3 @@
     });
     return $app;
 ?>
-
-
-
-<!--      {% for i in range(1, 2) %}
-            <button type="button" value="||||@!!@{{ i }}@!!@||||" class="placeholder">Variable {{ i }}</button>
-            {% endfor %}  -->

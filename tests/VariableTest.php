@@ -100,8 +100,6 @@
 
             $result = $new_variable->getNumber();
 
-            var_dump($result);
-
             $this->assertEquals($number, $result);
         }
    }

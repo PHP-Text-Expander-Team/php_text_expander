@@ -159,9 +159,9 @@
             $new_snippet->save();
 
             $result = $new_snippet->countvars($new_snippet->getText());
-
-            //test technically doesn't work because of offset IDs, but it does what we want
-            $this->assertEquals(["@!!@1@!!@", "@!!@2@!!@"], $result);
+            
+            //need to change keys because array_unique deletes keys
+            $this->assertEquals(["0"=>"@!!@1@!!@", "2"=>"@!!@2@!!@"], $result);
         }
    }
 
