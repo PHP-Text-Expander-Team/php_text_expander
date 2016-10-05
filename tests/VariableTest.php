@@ -9,16 +9,16 @@
     require_once "src/Variable.php";
 
     //Epicodus
-    $server = 'mysql:host=localhost;dbname=expander_test';
-    $username = 'root';
-    $password = 'root';
-    $DB = new PDO($server, $username, $password);
-
-    //home mac
-    // $server = 'mysql:host=localhost:8889;dbname=expander_test';
+    // $server = 'mysql:host=localhost;dbname=expander_test';
     // $username = 'root';
     // $password = 'root';
     // $DB = new PDO($server, $username, $password);
+
+    //home mac
+    $server = 'mysql:host=localhost:8889;dbname=expander_test';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);
 
     class Variable_test extends PHPUnit_Framework_TestCase
 
