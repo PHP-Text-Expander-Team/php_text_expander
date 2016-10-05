@@ -137,6 +137,31 @@
 
             $this->assertEquals([$new_snippet], $result);
         }
+
+        function test_snippet_replacePlaceHolders()
+        {
+            $shortcut = ";letter";
+            $text = "Hi there ||||@!!@1@!!@|||| is your name really ||||@!!@1@!!@||||? Thats ||||@!!@2@!!@||||";
+            $new_snippet = new Snippet ($shortcut, $text);
+            $new_snippet->save();
+            $placeholder_array = ["Bob","crazy"];
+
+            $result = $new_snippet->replacePlaceHolders($new_snippet->getText(), $placeholder_array);
+
+            $this->assertEquals("Hi there Bob is your name really Bob? Thats crazy",$result);
+        }
+
+        function test_snippet_countvars()
+        {
+            $shortcut = ";letter";
+            $text = "Hi there ||||@!!@1@!!@|||| is your name really ||||@!!@1@!!@||||? Thats ||||@!!@2@!!@||||";
+            $new_snippet = new Snippet ($shortcut, $text);
+            $new_snippet->save();
+
+            $result = $new_snippet->countvars($new_snippet->getText());
+
+            $this->assertEquals(2, $result);
+        }
    }
 
  ?>

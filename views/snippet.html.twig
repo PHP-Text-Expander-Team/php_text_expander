@@ -14,19 +14,18 @@
 
         <h2>{{ snippet.getShortcut }}</h2>
 
-        <div>
-            <p>
+        <p>
             {{ snippet.getText }}
-            </p>
-        </div>
+        </p>
 
         <div>
             <form action="/add_variables/{{ snippet.getId }}" method="post">
 
                 {% if placeholders is not empty %}
                     {% for placeholder in placeholders %}
-                    <label for="{{ placeholder }}"></label>
+                    <label for="{{ placeholder }}">Variable {{ loop.index }}</label>
                     <input type="text" name="{{ placeholder }}" placeholder="{{ placeholder }}">
+                    <br>
                     {% endfor %}
                 {% endif %}
                 <button type="submit">Submit</button>

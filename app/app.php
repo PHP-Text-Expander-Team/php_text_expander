@@ -39,7 +39,7 @@
         $text = $_POST['text'];
         $new_snippet = new Snippet($shortcut, $text);
         $new_snippet->save();
-        return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll(), 'variables' => $new_snippet->getNumberOfVariables()));
+        return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll()));
     });
 
     $app->post("/create_variables/{id}", function($id) use ($app) {
@@ -104,3 +104,9 @@
     });
     return $app;
 ?>
+
+
+
+<!--      {% for i in range(1, 2) %}
+            <button type="button" value="||||@!!@{{ i }}@!!@||||" class="placeholder">Variable {{ i }}</button>
+            {% endfor %}  -->
