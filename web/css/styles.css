@@ -1,8 +1,108 @@
-body {
-    /*background-color: #FF3232;*/
+.shortcutandtext {
+    display: none;
 }
 
-.btn {
-    background-color: #fff;
-    border: 2px solid #000;
+.red {
+    margin-top: 35px;
+    background-color: red;
+    color: #FFF;
+}
+
+.header {
+    background-color: green;
+    padding: 40px;
+    color: #FFF;
+}
+
+h1 {
+    font-size: 4em;
+}
+
+.generate {
+    background-color: white;
+    border: 2px red solid;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.placeholder {
+    background-color: white;
+    border: 2px red solid;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.footer {
+    color: #FFF;
+    border-top: 2px green solid;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 5px;
+    color: #000;
+}
+
+.about {
+    padding: 40px;
+}
+
+.deleteall {
+    background-color: white;
+    color: #000;
+    border: 2px #FFF solid;
+}
+
+.variable1 {
+    color: green;
+}
+
+.variable2 {
+    color: red;
+    display: none;
+}
+
+.variable3 {
+    color: blue;
+    display: none;
+}
+
+.variable4 {
+    color: orange;
+    display: none;
+}
+
+.variable5 {
+    color: pink;
+    display: none;
+}
+
+.variable6 {
+    color: pink;
+    display: none;
+}
+
+.variable7 {
+    color: pink;
+    display: none;
+}
+
+.variable8 {
+    color: pink;
+    display: none;
+}
+
+.variable9 {
+    color: pink;
+    display: none;
+}
+
+.glyphicon {
+    font-size: 4em;
+    display: none;
+}
+
+.button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -9,10 +9,12 @@
     <title>Text Expander</title>
   </head>
   <body>
-    <div class="container-fluid">
-        <h1>Text Expander</h1>
-
+    <div class="text-center header">
+        <h1>420 Blaze It</h1>
+    </div>
+    <div class="container-fluid text-center">
         <h2>{{ snippet.getShortcut }}</h2>
+<<<<<<< HEAD
 
         <div>
             <p>
@@ -32,9 +34,33 @@
                 <button type="submit">Submit</button>
             </form>
         </div>
+=======
+        <div class="row">
+            <div class="col-md-4 col-md-push-2">
+                <h3>Preview:</h3>
+                <textarea cols="50" rows="20">{{ snippet_text }}</textarea>
+                <form action="/add_variables/{{ snippet.getId }}" method="post">
+                    {% if snippetvars is not empty %}
+                        {% for snippetvar in snippetvars %}
+                        <label for="{{ snippetvar }}">Variable {{ loop.index }}</label>
+                        <input type="text" name="{{ snippetvar }}">
+                        <br>
+                        {% endfor %}
+                    {% endif %}
+                    <br>
+                    <button class="btn generate" type="submit">Submit</button>
+                </form>
+            </div>
+>>>>>>> 56e7037db07dcdb504cc4dac0e3fb7086d5a0af9
 <!-- RESULTS -->
-    </div>
-    <a href="/update/{{ snippet.getId }}">Update</a>
-    <a href="/">Home</a>
+            <div class="col-md-4 col-md-push-2">
+                <h3>Final Result:</h3>
+                <textarea cols="50" rows="20">{{ finaltext }}</textarea>
+            </div>
+        </div>
+<!-- NAVIGATION -->
+    <button class="btn generate" type="submit"><a href="/update/{{ snippet.getId }}">Update</a></button>
+    <button class="btn generate" type="submit"><a href="/">Home</a></button>
+</div>
   </body>
 </html>

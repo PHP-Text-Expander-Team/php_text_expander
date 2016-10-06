@@ -6,7 +6,6 @@
     */
 
     require_once "src/Snippet.php";
-    require_once "src/Variable.php";
 
     //Epicodus
     // $server = 'mysql:host=localhost;dbname=expander_test';
@@ -31,7 +30,6 @@
         protected function teardown()
         {
             Snippet::deleteAll();
-            Variable::deleteAll();
         }
 
         function test_snippet_save()
@@ -136,6 +134,32 @@
             $result = Snippet::getAll();
 
             $this->assertEquals([$new_snippet], $result);
+        }
+
+        function test_snippet_replacePlaceHolders()
+        {
+            $shortcut = ";letter";
+            $text = "Hi there įįł__1__łįį is your name really įįł__1__łįį? Thats įįł__2__łįį";
+            $new_snippet = new Snippet ($shortcut, $text);
+            $new_snippet->save();
+            $placeholder_array = ["Bob","crazy"];
+
+            $result = $new_snippet->replacePlaceHolders($new_snippet->getText(), $placeholder_array);
+
+            $this->assertEquals("Hi there Bob is your name really Bob? Thats crazy",$result);
+        }
+
+        function test_snippet_countvars()
+        {
+            $shortcut = ";letter";
+            $text = "Hi there įįł__1__łįį is your name really įįł__1__łįį? Thats įįł__2__łįį";
+            $new_snippet = new Snippet ($shortcut, $text);
+            $new_snippet->save();
+
+            $result = $new_snippet->countvars($new_snippet->getText());
+
+            //need to change keys because array_unique deletes keys
+            $this->assertEquals(["0"=>"ł__1__ł", "2"=>"ł__2__ł"], $result);
         }
    }
 

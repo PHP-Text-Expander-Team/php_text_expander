@@ -77,8 +77,8 @@
         {
             //make associative?
             $placeholder_array = array();
-            $search_array = explode("||||", $text);
-            $pattern = "/(@!!@)(\d|\d\d)(@!!@)/";
+            $search_array = explode("įį", $text);
+            $pattern = "/(ł__)(\d)(__ł)/";
 
             for ($i = 0; $i < count($search_array) ; $i++)
             {
@@ -87,23 +87,18 @@
                     array_push($placeholder_array, $search_array[$i]);
                 }
             }
-            $placeholder_array = array_unique($placeholder_array);
-            $i = 0;
-            foreach ($placeholder_array as $key => $placeholder) {
-                $i ++;
-                $placeholder = "||||@!!@" . $i . "@!!@||||";
-            }
             return $placeholder_array;
         }
 
         function replacePlaceHolders($text, $array)
         {
-            $text_array = explode(" ", $text);
+            $pattern = "/(ł__)(\d)(__ł)/";
+            $text_array = explode("įį", $text);
             for ($i = 0; $i < count($text_array); $i++)
             {
-                if ($text_array[$i] = "/(||||@!!@)(\d|\d\d)(@!!@||||)/")
+                if (preg_match($pattern, $text_array[$i]))
                 {
-                    $location = 1;
+                    $location = (int) substr($text_array[$i], 4, 1) - 1;
                     $text_array[$i] = $array[$location];
                 }
             $final_text = implode($text_array);
@@ -111,19 +106,22 @@
             return $final_text;
         }
 
-// "/(||||@!!@)(\d|\d\d)(@!!@||||)/"
-//
-// "Hi there @!!@1@!!@ is your name really @!!@1@!!@? Thats @!!@2@!!@"
-        //break sentence into array, loop through array length. if i = regex search, push i to array
-        //remember strstr() and substr_count as possibilities for getting # of variables
+        function countvars($text)
+        {
+        //user has to put in variables in order. display buttons as needed
 
-        //add variable property to text input that stores the number of variables in an array
-        //
-            // $placeholder_array = array();
-            // preg_match("(@!!@)(\d|\d\d)(@!!@)")
-
-            //remember strstr() and substr_count as possibilities for getting # of variables
-
+            $text_array = explode("įį", $text);
+            $pattern = "/(ł__)(\d)(__ł)/";
+            $final_array = array();
+            for ($i = 0; $i < count($text_array); $i++)
+            {
+                if (preg_match($pattern, $text_array[$i]))
+                {
+                    array_push($final_array, $text_array[$i]);
+                }
+            }
+            return array_unique($final_array);
+        }
 
 //--getters and setters--
         function setShortcut($shortcut)
@@ -150,6 +148,5 @@
         {
             return $this->id;
         }
-
     }
 ?>

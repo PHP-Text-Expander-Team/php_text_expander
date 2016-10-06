@@ -1,9 +1,9 @@
-//<!-- Back End -->
+// <!-- Back End -->
 console.log('basic javascript is functioning')
 
-//<!-- Front End  -->
-$(document).ready(function(){
-if (jQuery) {
+// <!-- Front End  -->
+$ (document).ready(function(){
+    if (jQuery) {
 console.log('jQuery 3.1.0 is loaded');
 } else {
 console.log('jQuery is not loaded');
@@ -34,6 +34,45 @@ $('button.placeholder').click(function () {
         word_to_insert,
         last_input_value.slice(input_position)
     ].join(''));
+});
+
+$(".show").click(function() {
+    $(".shortcutandtext").show();
+    $(".intro").hide();
+    $(".button").hide();
+});
+
+//Click events for variable buttons on home page that will sequentially show buttons after use.
+$(".variable1").click(function(){
+    $(".variable2").show();
+});
+
+$(".variable2").click(function(){
+    $(".variable3").show();
+});
+
+$(".variable3").click(function(){
+    $(".variable4").show();
+});
+
+$(".variable4").click(function(){
+    $(".variable5").show();
+});
+
+$(".variable5").click(function(){
+    $(".variable6").show();
+});
+
+$(".variable6").click(function(){
+    $(".variable7").show();
+});
+
+$(".variable7").click(function(){
+    $(".variable8").show();
+});
+
+$(".variable8").click(function(){
+    $(".variable9").show();
 });
 
 });
