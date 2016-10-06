@@ -141,7 +141,7 @@
         function test_snippet_replacePlaceHolders()
         {
             $shortcut = ";letter";
-            $text = "Hi there łłł__1__łłł is your name really łłł__1__łłł? Thats łłł__2__łłł";
+            $text = "Hi there įįł__1__łįį is your name really įįł__1__łįį? Thats įįł__2__łįį";
             $new_snippet = new Snippet ($shortcut, $text);
             $new_snippet->save();
             $placeholder_array = ["Bob","crazy"];
@@ -154,14 +154,14 @@
         function test_snippet_countvars()
         {
             $shortcut = ";letter";
-            $text = "Hi there łłł__1__łłł is your name really łłł__1__łłł? Thats łłł__2__łłł";
+            $text = "Hi there įįł__1__łįį is your name really įįł__1__łįį? Thats įįł__2__łįį";
             $new_snippet = new Snippet ($shortcut, $text);
             $new_snippet->save();
 
             $result = $new_snippet->countvars($new_snippet->getText());
 
             //need to change keys because array_unique deletes keys
-            $this->assertEquals(["0"=>"ł__1__ł", "2"=>"ł__1__ł"], $result);
+            $this->assertEquals(["0"=>"ł__1__ł", "2"=>"ł__2__ł"], $result);
         }
    }
 

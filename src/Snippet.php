@@ -77,7 +77,7 @@
         {
             //make associative?
             $placeholder_array = array();
-            $search_array = explode("łł", $text);
+            $search_array = explode("įį", $text);
             $pattern = "/(ł__)(\d)(__ł)/";
 
             for ($i = 0; $i < count($search_array) ; $i++)
@@ -93,7 +93,7 @@
         function replacePlaceHolders($text, $array)
         {
             $pattern = "/(ł__)(\d)(__ł)/";
-            $text_array = explode("łł", $text);
+            $text_array = explode("įį", $text);
             for ($i = 0; $i < count($text_array); $i++)
             {
                 if (preg_match($pattern, $text_array[$i]))
@@ -110,7 +110,7 @@
         {
         //user has to put in variables in order. display buttons as needed
 
-            $text_array = explode("łł", $text);
+            $text_array = explode("įį", $text);
             $pattern = "/(ł__)(\d)(__ł)/";
             $final_array = array();
             for ($i = 0; $i < count($text_array); $i++)
