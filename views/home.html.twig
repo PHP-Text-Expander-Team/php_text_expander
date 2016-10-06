@@ -47,7 +47,7 @@
             <div class="col-md-4 col-md-push-4 text-center">
                 <h3>Archived Shortcuts:</h3>
                 <select onchange="location = this.value;">
-                    <option placeholder="Shortcuts">Shortcuts</option>
+                    <option disabled selected>Shortcuts</option>
                 {% for snippet in snippets %}
                     <option value="/this_snippet/{{ snippet.getId }}">{{ snippet.getShortcut }}</option>
                 {% endfor %}
