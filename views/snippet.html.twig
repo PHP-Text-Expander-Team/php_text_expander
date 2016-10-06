@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-md-4 col-md-push-2">
                 <h3>Preview:</h3>
-                <textarea cols="50" rows="20">{{ snippet.getText }}</textarea>
+                <textarea cols="50" rows="20">{{ snippet_text }}</textarea>
                 <form action="/add_variables/{{ snippet.getId }}" method="post">
                     {% if snippetvars is not empty %}
                         {% for snippetvar in snippetvars %}

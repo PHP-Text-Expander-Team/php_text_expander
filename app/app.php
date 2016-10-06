@@ -67,7 +67,7 @@
 
         $vars_array = array();
         for ($i = 1; $i <= count($snippet_vars); $i++) {
-            $variable = $_POST['@!!@' . $i . '@!!@'];
+            $variable = $_POST['łł__' . $i . '__łł'];
             array_push($vars_array, $variable);
         }
 
