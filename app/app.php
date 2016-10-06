@@ -34,8 +34,8 @@
 
     // post text input and shortcut input
     $app->post("/new_snippet", function() use ($app) {
-        $shortcut = $_POST['shortcut'];
-        $text = $_POST['text'];
+        $shortcut = ($_POST['shortcut']);
+        $text = base64_encode($_POST['text']);
         $new_snippet = new Snippet($shortcut, $text);
         $new_snippet->save();
         return $app->redirect("/");
@@ -108,9 +108,10 @@
     $app->get("/this_snippet/{id}", function($id) use ($app) {
         $snippet = Snippet::find($id);
         $snippet_text = $snippet->getText();
+        $snippet_text = base64_decode($snippet_text);
         $snippet_vars = $snippet->countvars($snippet_text);
         $snippet_placeholders = $snippet->getPlaceHolders($snippet_text);
-        return $app['twig']->render('snippet.html.twig', array('snippet' => $snippet, 'placeholders' => $snippet_placeholders, 'snippetvars' => $snippet_vars, 'finaltext' => ''));
+        return $app['twig']->render('snippet.html.twig', array('snippet' => $snippet, 'snippet_text' => $snippet_text, 'placeholders' => $snippet_placeholders, 'snippetvars' => $snippet_vars, 'finaltext' => ''));
     });
     return $app;
 ?>
