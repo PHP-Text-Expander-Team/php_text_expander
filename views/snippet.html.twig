@@ -14,32 +14,49 @@
     </div>
     <div class="container-fluid text-center">
         <h2>{{ snippet.getShortcut }}</h2>
-        <div class="row">
-            <div class="col-md-4 col-md-push-2">
-                <h3>Preview:</h3>
-                <textarea cols="50" rows="20">{{ snippet_text }}</textarea>
-                <form action="/add_variables/{{ snippet.getId }}" method="post">
-                    {% if snippetvars is not empty %}
-                        {% for snippetvar in snippetvars %}
-                        <label for="{{ snippetvar }}">Variable {{ loop.index }}</label>
-                        <input type="text" name="{{ snippetvar }}">
+<!-- PAGE W/ VARIABLES -->
+        {% if snippetvars is not empty %}
+            <div class="row">
+                <div class="col-md-4 col-md-push-2">
+                    <h3>Preview:</h3>
+                    <textarea cols="50" rows="20">{{ snippet_text }}</textarea>
+                    <form action="/add_variables/{{ snippet.getId }}" method="post">
+                            {% for snippetvar in snippetvars %}
+                            <label for="{{ snippetvar }}">Variable {{ loop.index }}</label>
+                            <input type="text" name="{{ snippetvar }}">
+                            <br>
+                            {% endfor %}
                         <br>
-                        {% endfor %}
-                    {% endif %}
-                    <br>
-                    <button class="btn generate" type="submit">Submit</button>
-                </form>
-            </div>
+                        <button class="btn generate" type="submit">Submit</button>
+                    </form>
+                </div>
 <!-- RESULTS -->
             <div class="col-md-4 col-md-push-2">
                 <h3>Final Result:</h3>
                 <textarea cols="50" rows="20" type="text" id="visible-input" value="{{ finaltext }}">{{ finaltext }}</textarea>
                 <input type="button" id="visible-button" value="Copy">
             </div>
-        </div>
+        {% else %}
+        <!-- PAGE W/O VARIABLES -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Snippet</h3>
+                            <textarea cols="50" rows="20">{{ snippet_text }}</textarea>
+                        </div>
+                    </div>
+        {% endif %}
 <!-- NAVIGATION -->
-    <button class="btn generate" type="submit"><a href="/update/{{ snippet.getId }}">Update</a></button>
-    <button class="btn generate" type="submit"><a href="/">Home</a></button>
+    <form action="/update/{{ snippet.getId }}" method="get">
+        <button type="submit" class="btn generate">Update</button>
+    </form>
+    <form action="/delete_snippet/{{ snippet.getId }}" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button class="btn generate" type="submit">Delete</button>
+    </form>
+    <form action="/" method="get">
+        <button type="submit" class="btn generate">Home</button>
+    </form>
+
 </div>
   </body>
 </html>
