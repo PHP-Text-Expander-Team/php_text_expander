@@ -36,6 +36,12 @@ $('button.placeholder').click(function () {
     ].join(''));
 });
 
+$(".show").click(function() {
+    $(".shortcutandtext").show();
+    $(".intro").hide();
+    $(".button").hide();
+});
+
 //Click events for variable buttons on home page that will sequentially show buttons after use.
 $(".variable1").click(function(){
     $(".variable2").show();

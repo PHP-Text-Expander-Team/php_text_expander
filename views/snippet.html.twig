@@ -9,31 +9,36 @@
     <title>Text Expander</title>
   </head>
   <body>
-    <div class="container-fluid">
-        <h1>Text Expander</h1>
-
+    <div class="text-center header">
+        <h1>420 Blaze It</h1>
+    </div>
+    <div class="container-fluid text-center">
         <h2>{{ snippet.getShortcut }}</h2>
 
-    <textarea cols="50" rows="20">{{ snippet.getText }}</textarea>
-
-        <div>
-            <form action="/add_variables/{{ snippet.getId }}" method="post">
-
-                {% if snippetvars is not empty %}
-                    {% for snippetvar in snippetvars %}
-                    <label for="{{ snippetvar }}">Variable {{ loop.index }}</label>
-                    <input type="text" name="{{ snippetvar }}">
+        <div class="row">
+            <div class="col-md-4 col-md-push-2">
+                <h3>Preview:</h3>
+                <textarea cols="50" rows="20">{{ snippet.getText }}</textarea>
+                <form action="/add_variables/{{ snippet.getId }}" method="post">
+                    {% if snippetvars is not empty %}
+                        {% for snippetvar in snippetvars %}
+                        <label for="{{ snippetvar }}">Variable {{ loop.index }}</label>
+                        <input type="text" name="{{ snippetvar }}">
+                        <br>
+                        {% endfor %}
+                    {% endif %}
                     <br>
-                    {% endfor %}
-                {% endif %}
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+                    <button class="btn generate" type="submit">Submit</button>
+                </form>
+            </div>
 <!-- RESULTS -->
-    <textarea cols="50" rows="20">{{ finaltext }}</textarea>
+            <div class="col-md-4 col-md-push-2">
+                <h3>Final Result:</h3>
+                <textarea cols="50" rows="20">{{ finaltext }}</textarea>
+            </div>
+        </div>
 <!-- NAVIGATION -->
-    </div>
-    <a href="/update/{{ snippet.getId }}">Update</a>
-    <a href="/">Home</a>
+    <button class="btn generate" type="submit"><a href="/update/{{ snippet.getId }}">Update</a></button>
+    <button class="btn generate" type="submit"><a href="/">Home</a></button>
   </body>
 </html>
