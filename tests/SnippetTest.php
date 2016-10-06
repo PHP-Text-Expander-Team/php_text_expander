@@ -9,16 +9,16 @@
     require_once "src/Variable.php";
 
     //Epicodus
-    // $server = 'mysql:host=localhost;dbname=expander_test';
-    // $username = 'root';
-    // $password = 'root';
-    // $DB = new PDO($server, $username, $password);
-
-    //home mac
-    $server = 'mysql:host=localhost:8889;dbname=expander_test';
+    $server = 'mysql:host=localhost;dbname=expander_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
+
+    //home mac
+    // $server = 'mysql:host=localhost:8889;dbname=expander_test';
+    // $username = 'root';
+    // $password = 'root';
+    // $DB = new PDO($server, $username, $password);
 
     class Snippet_test extends PHPUnit_Framework_TestCase
 
@@ -159,7 +159,7 @@
             $new_snippet->save();
 
             $result = $new_snippet->countvars($new_snippet->getText());
-            
+
             //need to change keys because array_unique deletes keys
             $this->assertEquals(["0"=>"@!!@1@!!@", "2"=>"@!!@2@!!@"], $result);
         }
