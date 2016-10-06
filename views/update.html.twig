@@ -6,27 +6,36 @@
       <script src='/js/jquery-3.1.0.js'></script>
       <script src='/js/bootstrap.min.js' type='text/javascript'></script>
       <script src='/js/scripts.js'></script>
-    <title>Text Expander</title>
+    <title>Code -> Cheats</title>
   </head>
   <body>
-    <div class="container-fluid">
-        <h1>Text Expander</h1>
+     <div class="text-center header">
+        <h1>Code -> Cheats</h1>
+     </div>
+     <div class="container">
         <h2>Update Snippet</h2>
-        <div>
-            <form action="/update_shortcut/{{ snippet.getId }}" method="post">
-                <input type="hidden" name="_method" value="patch">
-                <label for="new_shortcut">Update:</label>
-                <textarea cols="10" rows="1" id="txt1" name="new_shortcut" required>{{ snippet.getShortcut }}</textarea>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-        <div>
-            <form action="/update_text/{{ snippet.getId }}" method="post">
-                <input type="hidden" name="_method" value="patch">
-                <label for="new_text">Update:</label>
-                <textarea cols="100" rows="40" id="txt1" name="new_text" required>{{ snippet_text }}</textarea>
-                <button type="submit">Submit</button>
-            </form>
+        <div class="row">
+            <div class="col-md-4 col-md-push-2">
+                <form action="/update_shortcut/{{ snippet.getId }}" method="post">
+                    <input type="hidden" name="_method" value="patch">
+                    <label for="new_shortcut">Update:</label>
+                    <br>
+                    <textarea cols="30" rows="1" id="txt1" name="new_shortcut" required>{{ snippet.getShortcut }}</textarea>
+                    <br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-4 col-md-push-2">
+                <form action="/update_text/{{ snippet.getId }}" method="post">
+                    <input type="hidden" name="_method" value="patch">
+                    <label for="new_text">Update:</label>
+                    <br>
+                    <textarea cols="50" rows="20" id="txt1" name="new_text" required>{{ snippet_text }}</textarea>
+                    <br>
+                    <br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
         </div>
         <form action="/" method="get">
             <button type="submit" class="btn generate">Home</button>
