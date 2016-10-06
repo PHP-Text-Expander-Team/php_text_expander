@@ -20,7 +20,7 @@
             foreach($returned_users as $user) {
                 $user_name = $user['user_name'];
                 $password = $user['password'];
-                $email = $user['email']
+                $email = $user['email'];
                 $new_user = new User($user_name, $password, $email);
                 array_push($users, $new_user);
             }
@@ -39,7 +39,8 @@
 
             foreach($users as $user) {
                 $user_name = $user->getUserName();
-                if ($user_name == $search_name && ) {
+                $password = $user->getPassword();
+                if ($user_name == $search_name && $password == $search_password) {
                     $found_user = $user;
                 }
 
@@ -74,7 +75,7 @@
 
         function updateEmail($email)
         {
-            $this->email = $email
+            $this->email = $email;
             $GLOBALS['DB']->exec("UPDATE users SET email = '{$this->email}' WHERE id = {$this->getId()};");
         }
 
