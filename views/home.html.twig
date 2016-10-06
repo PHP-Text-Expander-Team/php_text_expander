@@ -9,11 +9,34 @@
     <title>Text Expander</title>
   </head>
   <body>
-
-    <div class="container-fluid">
-        <div class="jumbotron text-center">
-            <h1>Hi Ryan</h1>
+    <div class="text-center header">
+        <h1>420 Blaze It</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-push-2 about text-center">
+            <h3>
+            Text Expander is an easy to use text utility that allows you to save and modify your very own text templates. Quickly modify your text by setting up variables and replace them anytime you use your template. Your templates can be paste any where you like.
+            </h3>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 about text-center">
+            <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+            <h5>Create Text Templates</h5>
+            Create and save customizable text templates with ease. Just add your text and save.
+        </div>
+        <div class="col-md-4 about text-center">
+            <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+            <h5>Variables</h5>
+            Variables add power to your text templates by allowing you to later replace the variables with custom text.
+        </div>
+        <div class="col-md-4 about text-center">
+            <span class="glyphicon glyphicon-retweet" aria-hidden="true"></span>
+            <h5>Reusable Templates</h5>
+            All saved text has no limits on how many times it can be used. Reuse and modify it whenever you need it
+        </div>
+    </div>
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 col-md-push-3">
                 <form action="/new_snippet" method="post">
@@ -24,22 +47,19 @@
                     <h3>Text Input</h3>
                     <textarea cols="50" rows="5" id="txt1" name="text" placeholder="emailaddress@email.com" required></textarea>
                     <br>
-                    <button class="btn" type="submit">Generate</button>
+                    <button type="button" value="||||@!!@1@!!@||||" class="placeholder variable1">Variable 1</button>
+                    <button type="button" value="||||@!!@2@!!@||||" class="placeholder variable2">Variable 2</button>
+                    <button type="button" value="||||@!!@3@!!@||||" class="placeholder variable3">Variable 3</button>
+                    <button type="button" value="||||@!!@4@!!@||||" class="placeholder variable4">Variable 4</button>
+                    <button type="button" value="||||@!!@5@!!@||||" class="placeholder variable5">Variable 5</button>
+                    <br>
+                    <br>
+                    <button class="btn generate" type="submit">Generate</button>
                     <br>
                 </form>
             </div>
         </div>
         <br>
-        <div class="row">
-            <div class="col-md-6 col-md-push-6">
-                <button type="button" value="||||@!!@1@!!@||||" class="placeholder">Variable 1</button>
-                <button type="button" value="||||@!!@2@!!@||||" class="placeholder">Variable 2</button>
-                <button type="button" value="||||@!!@3@!!@||||" class="placeholder">Variable 3</button>
-                <button type="button" value="||||@!!@4@!!@||||" class="placeholder">Variable 4</button>
-                <button type="button" value="||||@!!@5@!!@||||" class="placeholder">Variable 5</button>
-            </div>
-        </div>
-
             <!-- <form action="/create_variables" method="post">
                 <h3>Add Variables</h3>
                 <label for="number_of_variables">Number:</label>
@@ -48,16 +68,15 @@
             </form> -->
 
             {% if snippets is not empty %}
-            <div class="row">
-                <div class="col-md-4 col-md-push-4">
+            <div class="row red">
+                <div class="col-md-4 col-md-push-4 text-center">
                     <h3>Archived Shortcuts:</h3>
                     {% for snippet in snippets %}
-                    <select class="" name="">
-                        <option><a href="/this_snippet/{{ snippet.getId }}">{{ snippet.getShortcut }}</a></option>
-                    </select>
+                        <li><a href="/this_snippet/{{ snippet.getId }}">{{ snippet.getShortcut }}</a></li>
                     {% endfor %}
+                    <br>
                     <form action="/clear" method="post">
-                        <button class="btn" type="submit" name="button">Delete all shortcuts</button>
+                        <button class="btn deleteall" type="submit" name="button">Delete all shortcuts</button>
                     </form>
                 </div>
             </div>
