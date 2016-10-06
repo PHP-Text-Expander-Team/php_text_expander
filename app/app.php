@@ -67,7 +67,7 @@
 
         $vars_array = array();
         for ($i = 1; $i <= count($snippet_vars); $i++) {
-            $variable = $_POST['łł__' . $i . '__łł'];
+            $variable = $_POST['ł__' . $i . '__ł'];
             array_push($vars_array, $variable);
         }
 
