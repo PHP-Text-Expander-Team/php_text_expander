@@ -54,19 +54,45 @@ h1 {
 
 .variable2 {
     color: red;
+    display: none;
 }
 
 .variable3 {
     color: blue;
+    display: none;
 }
 
 .variable4 {
     color: orange;
+    display: none;
 }
+
 .variable5 {
     color: pink;
+    display: none;
+}
+
+.variable6 {
+    color: pink;
+    display: none;
+}
+
+.variable7 {
+    color: pink;
+    display: none;
+}
+
+.variable8 {
+    color: pink;
+    display: none;
+}
+
+.variable9 {
+    color: pink;
+    display: none;
 }
 
 .glyphicon {
     font-size: 4em;
+    display: none;
 }
