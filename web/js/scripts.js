@@ -75,4 +75,11 @@ $(".variable8").click(function(){
     $(".variable9").show();
 });
 
+//copy functionality
+  document.querySelector("#visible-button").onclick = function() {
+  document.querySelector("#visible-input").select();
+  document.execCommand('copy');
+};
+
+
 });
