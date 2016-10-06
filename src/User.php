@@ -1,15 +1,17 @@
 <?php
     class User
     {
+        private $id;
         private $user_name;
         private $password;
         private $email;
 
-        function __construct($user_name, $password, $email)
+        function __construct($user_name, $password, $email, $id = null)
         {
             $this->user_name = $user_name;
             $this->password = $password;
             $this->email = $email;
+            $this->id = $id;
         }
 //--static functions--
 
@@ -21,7 +23,8 @@
                 $user_name = $user['user_name'];
                 $password = $user['password'];
                 $email = $user['email'];
-                $new_user = new User($user_name, $password, $email);
+                $id = $user['id'];
+                $new_user = new User($user_name, $password, $email, $id);
                 array_push($users, $new_user);
             }
             return $users;
@@ -52,7 +55,7 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO users (user_name, password) VALUES ('{$this->getUserName()}', '{$this->getPassword()}');");
+            $GLOBALS['DB']->exec("INSERT INTO users (user_name, password, email) VALUES ('{$this->getUserName()}', '{$this->getPassword()}', '{$this->getEmail()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
@@ -93,6 +96,11 @@
         function setEmail($email)
         {
             $this->email = $email;
+        }
+
+        function setId($id)
+        {
+            $this->id = $id;
         }
 
         function getUserName()

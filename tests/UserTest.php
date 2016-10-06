@@ -10,16 +10,16 @@
     require_once "src/User.php";
 
     //Epicodus
-    $server = 'mysql:host=localhost;dbname=expander_test';
-    $username = 'root';
-    $password = 'root';
-    $DB = new PDO($server, $username, $password);
-
-    //home mac
-    // $server = 'mysql:host=localhost:8889;dbname=expander_test';
+    // $server = 'mysql:host=localhost;dbname=expander_test';
     // $username = 'root';
     // $password = 'root';
     // $DB = new PDO($server, $username, $password);
+
+    //home mac
+    $server = 'mysql:host=localhost:8889;dbname=expander_test';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);
 
     class User_test extends PHPUnit_Framework_TestCase
 
@@ -36,12 +36,13 @@
             User::deleteAll();
         }
 
-        function test_user_save()
+        function test_save()
         {
             $user_name = "XxX420BlazeItPHPBoyzXxX";
             $password = "macmuffin";
-            $email = "james.mcneil@gmail.com"
-            $new_user = new User ($user_name, $password, $email);
+            $email = "james.mcneil@gmail.com";
+            $id = 1;
+            $new_user = new User ($user_name, $password, $email, $id);
             $new_user->save();
 
             $result = User::getAll();
@@ -49,17 +50,19 @@
             $this->assertEquals([$new_user],$result);
         }
 
-        function test_user_getAll()
+        function test_getAll()
         {
             $user_name = "XxX420BlazeItPHPBoyzXxX";
             $password = "macmuffin";
-            $email = "james.mcneil@gmail.com"
-            $new_user = new User ($user_name, $password, $email);
+            $email = "james.mcneil@gmail.com";
+            $id = 1;
+            $new_user = new User ($user_name, $password, $email, $id);
             $new_user->save();
             $user_name2 = "phaze_XxCutThroatNoScopexX";
             $password2 = "starbucks";
-            $email2 = "italianstalion6969@gmail.com"
-            $new_user2 = new User ($user_name, $password, $email);
+            $email2 = "italianstalion6969@gmail.com";
+            $id2 = 2;
+            $new_user2 = new User ($user_name2, $password2, $email2, $id2);
             $new_user2->save();
 
             $result = User::getAll();
@@ -67,17 +70,19 @@
             $this->assertEquals([$new_user, $new_user2], $result);
         }
 
-        function test_user_deleteAll()
+        function test_deleteAll()
         {
             $user_name = "XxX420BlazeItPHPBoyzXxX";
             $password = "macmuffin";
-            $email = "james.mcneil@gmail.com"
-            $new_user = new User ($user_name, $password, $email);
+            $email = "james.mcneil@gmail.com";
+            $id = 1;
+            $new_user = new User ($user_name, $password, $email, $id);
             $new_user->save();
             $user_name2 = "phaze_XxCutThroatNoScopexX";
             $password2 = "starbucks";
-            $email2 = "italianstalion6969@gmail.com"
-            $new_user2 = new User ($user_name, $password, $email);
+            $email2 = "italianstalion6969@gmail.com";
+            $id2 = 2;
+            $new_user2 = new User ($user_name2, $password2, $email2, $id2);
             $new_user2->save();
 
             User::deleteAll();
@@ -86,35 +91,39 @@
             $this->assertEquals([], $result);
         }
 
-        function test_user_find()
+        function test_find()
         {
             $user_name = "XxX420BlazeItPHPBoyzXxX";
             $password = "macmuffin";
-            $email = "james.mcneil@gmail.com"
-            $new_user = new User ($user_name, $password, $email);
+            $email = "james.mcneil@gmail.com";
+            $id = 1;
+            $new_user = new User ($user_name, $password, $email, $id);
             $new_user->save();
             $user_name2 = "phaze_XxCutThroatNoScopexX";
             $password2 = "starbucks";
-            $email2 = "italianstalion6969@gmail.com"
-            $new_user2 = new User ($user_name, $password, $email);
+            $email2 = "italianstalion6969@gmail.com";
+            $id2 = 2;
+            $new_user2 = new User ($user_name2, $password2, $email2, $id2);
             $new_user2->save();
 
-            $result = User::find($new_user->getId());
+            $result = User::find($new_user->getUserName(), $new_user->getPassword());
 
             $this->assertEquals($new_user, $result);
         }
 
-        function test_user_delete()
+        function test_delete()
         {
             $user_name = "XxX420BlazeItPHPBoyzXxX";
             $password = "macmuffin";
-            $email = "james.mcneil@gmail.com"
-            $new_user = new User ($user_name, $password, $email);
+            $email = "james.mcneil@gmail.com";
+            $id = 1;
+            $new_user = new User ($user_name, $password, $email, $id);
             $new_user->save();
             $user_name2 = "phaze_XxCutThroatNoScopexX";
             $password2 = "starbucks";
-            $email2 = "italianstalion6969@gmail.com"
-            $new_user2 = new User ($user_name, $password, $email);
+            $email2 = "italianstalion6969@gmail.com";
+            $id2 = 2;
+            $new_user2 = new User ($user_name2, $password2, $email2, $id2);
             $new_user2->save();
 
             $new_user2->delete();
@@ -127,57 +136,63 @@
         {
             $user_name = "XxX420BlazeItPHPBoyzXxX";
             $password = "macmuffin";
-            $email = "james.mcneil@gmail.com"
-            $new_user = new User ($user_name, $password, $email);
+            $email = "james.mcneil@gmail.com";
+            $id = 1;
+            $new_user = new User ($user_name, $password, $email, $id);
             $new_user->save();
             $user_name2 = "phaze_XxCutThroatNoScopexX";
             $password2 = "starbucks";
-            $email2 = "italianstalion6969@gmail.com"
-            $new_user2 = new User ($user_name, $password, $email);
+            $email2 = "italianstalion6969@gmail.com";
+            $id2 = 2;
+            $new_user2 = new User ($user_name2, $password2, $email2, $id2);
             $new_user2->save();
 
-            $new_user->updateUserName("InsaneClown");
+            $new_user->updateUserName("PhP_InsaneClown91_PhP");
             $result = User::getAll();
 
-            $this->assertEquals([$new_user], $result);
+            $this->assertEquals([$new_user, $new_user2], $result);
         }
 
         function test_updateUserPassword()
         {
             $user_name = "XxX420BlazeItPHPBoyzXxX";
             $password = "macmuffin";
-            $email = "james.mcneil@gmail.com"
-            $new_user = new User ($user_name, $password, $email);
+            $email = "james.mcneil@gmail.com";
+            $id = 1;
+            $new_user = new User ($user_name, $password, $email, $id);
             $new_user->save();
             $user_name2 = "phaze_XxCutThroatNoScopexX";
             $password2 = "starbucks";
-            $email2 = "italianstalion6969@gmail.com"
-            $new_user2 = new User ($user_name, $password, $email);
+            $email2 = "italianstalion6969@gmail.com";
+            $id2 = 2;
+            $new_user2 = new User ($user_name2, $password2, $email2, $id2);
             $new_user2->save();
 
-            $new_user->updateUserPassword("mcmuffin");
+            $new_user->updatePassword("mcmuffin");
             $result = User::getAll();
 
-            $this->assertEquals([$new_user], $result);
+            $this->assertEquals([$new_user, $new_user2], $result);
         }
 
         function test_updateUserEmail()
         {
             $user_name = "XxX420BlazeItPHPBoyzXxX";
             $password = "macmuffin";
-            $email = "james.mcneil@gmail.com"
-            $new_user = new User ($user_name, $password, $email);
+            $email = "james.mcneil@gmail.com";
+            $id = 1;
+            $new_user = new User ($user_name, $password, $email, $id);
             $new_user->save();
             $user_name2 = "phaze_XxCutThroatNoScopexX";
             $password2 = "starbucks";
-            $email2 = "italianstalion6969@gmail.com"
-            $new_user2 = new User ($user_name, $password, $email);
+            $email2 = "italianstalion6969@gmail.com";
+            $id2 = 2;
+            $new_user2 = new User ($user_name2, $password2, $email2, $id2);
             $new_user2->save();
 
-            $new_user->updateUserEmail("jamie.mcneil@gmail.com");
+            $new_user->updateEmail("jamie.mcneil@gmail.com");
             $result = User::getAll();
 
-            $this->assertEquals([$new_user], $result);
+            $this->assertEquals([$new_user, $new_user2], $result);
         }
    }
 
