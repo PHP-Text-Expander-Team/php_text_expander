@@ -2,14 +2,8 @@
     padding: 10px;
 }
 
-.red {
-    margin-top: 35px;
-    background-color: red;
-    color: #FFF;
-}
-
 .header {
-    background-color: green;
+    background-color: #CCC;
     padding: 40px;
     color: #FFF;
 }
@@ -20,7 +14,7 @@ h1 {
 
 .generate {
     background-color: white;
-    border: 2px red solid;
+    border: 2px #ffb732 solid;
     border-radius: 10px;
     padding: 10px;
 }
@@ -34,7 +28,7 @@ h1 {
 
 .footer {
     color: #FFF;
-    border-top: 2px green solid;
+    border-top: 2px #ffb732 solid;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -105,4 +99,18 @@ h1 {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+h1, h2, h3 {
+    color: #ffb732;
+}
+
+
+button {
+    transition: all .5s ease;
+}
+
+button:hover {
+    background-color: #ffb732;
+    border: 2px #000 solid;
 }
