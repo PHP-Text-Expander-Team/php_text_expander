@@ -5,16 +5,16 @@
     require_once __DIR__."/../src/Variable.php";
 
     // //Epicodus
-    $server = 'mysql:host=localhost;dbname=expander';
-    $username = 'root';
-    $password = 'root';
-    $DB = new PDO($server, $username, $password);
-
-    // home mac
-    // $server = 'mysql:host=localhost:8889;dbname=expander';
+    // $server = 'mysql:host=localhost;dbname=expander';
     // $username = 'root';
     // $password = 'root';
     // $DB = new PDO($server, $username, $password);
+
+    // home mac
+    $server = 'mysql:host=localhost:8889;dbname=expander';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);
 
     use Symfony\Component\HttpFoundation\Request;
     Request::enableHttpMethodParameterOverride();
@@ -83,7 +83,7 @@
 
         $vars_array = array();
         for ($i = 1; $i <= count($snippet_vars); $i++) {
-            $variable = $_POST['@!!@' . $i . '@!!@'];
+            $variable = $_POST['łł__' . $i . '__łł'];
             array_push($vars_array, $variable);
         }
 
