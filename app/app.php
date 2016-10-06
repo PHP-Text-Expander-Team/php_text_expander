@@ -20,6 +20,11 @@
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
+    session_start();
+    if (empty($_SESSION['current_user'])) {
+        $_SESSION['current_user'] = null;
+    }
+
     $app = new Silex\Application();
 
     $app['debug'] = true;
@@ -98,7 +103,7 @@
 
     // temporary login page
     $app->get("/login", function() use ($app) {
-        return $app['twig']->render("login.html.twig");
+        return $app['twig']->render('login.html.twig', array('user' => $_SESSION['user']));
     });
 
     return $app;
