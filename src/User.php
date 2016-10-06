@@ -72,6 +72,12 @@
             $GLOBALS['DB']->exec("UPDATE users SET password = '{$this->password}' WHERE id = {$this->getId()};");
         }
 
+        function updateEmail($email)
+        {
+            $this->email = $email
+            $GLOBALS['DB']->exec("UPDATE users SET email = '{$this->email}' WHERE id = {$this->getId()};");
+        }
+
 //--getters and setters--
         function setUserName($user_name)
         {
