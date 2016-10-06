@@ -6,7 +6,6 @@
     */
 
     require_once "src/Snippet.php";
-    require_once "src/Variable.php";
 
     //Epicodus
     // $server = 'mysql:host=localhost;dbname=expander_test';
@@ -31,7 +30,6 @@
         protected function teardown()
         {
             Snippet::deleteAll();
-            Variable::deleteAll();
         }
 
         function test_snippet_save()

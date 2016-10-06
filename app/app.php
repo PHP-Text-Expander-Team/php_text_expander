@@ -2,7 +2,6 @@
     date_default_timezone_set('America/Los_Angeles');
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/Snippet.php";
-    require_once __DIR__."/../src/Variable.php";
 
     // //Epicodus
     // $server = 'mysql:host=localhost;dbname=expander';
