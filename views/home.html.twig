@@ -29,8 +29,9 @@
                 </form>
             </div>
         </div>
+        <br>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6 col-md-push-6">
                 <button type="button" value="||||@!!@1@!!@||||" class="placeholder">Variable 1</button>
                 <button type="button" value="||||@!!@2@!!@||||" class="placeholder">Variable 2</button>
                 <button type="button" value="||||@!!@3@!!@||||" class="placeholder">Variable 3</button>
@@ -47,13 +48,19 @@
             </form> -->
 
             {% if snippets is not empty %}
-            <form action="/clear" method="post">
-                <button class="btn" type="submit" name="button">Delete all shortcuts</button>
-            </form>
-            <h3>Archived Shortcuts:</h3>
-                {% for snippet in snippets %}
-                <li><a href="/this_snippet/{{ snippet.getId }}">{{ snippet.getShortcut }}</a></li>
-                {% endfor %}
+            <div class="row">
+                <div class="col-md-4 col-md-push-4">
+                    <h3>Archived Shortcuts:</h3>
+                    {% for snippet in snippets %}
+                    <select class="" name="">
+                        <option><a href="/this_snippet/{{ snippet.getId }}">{{ snippet.getShortcut }}</a></option>
+                    </select>
+                    {% endfor %}
+                    <form action="/clear" method="post">
+                        <button class="btn" type="submit" name="button">Delete all shortcuts</button>
+                    </form>
+                </div>
+            </div>
             {% endif %}
     </div>
   </body>
