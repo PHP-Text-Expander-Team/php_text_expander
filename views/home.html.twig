@@ -6,6 +6,7 @@
       <script src='/js/jquery-3.1.0.js'></script>
       <script src='/js/bootstrap.min.js' type='text/javascript'></script>
       <script src='/js/scripts.js'></script>
+      <link href="https://fonts.googleapis.com/css?family=Roboto|Shrikhand" rel="stylesheet">
     <title>Code -> Cheats</title>
   </head>
   <body>
@@ -45,7 +46,7 @@
                 </form>
             </div>
             {% if snippets is not empty %}
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <h3>Archived Shortcuts:</h3>
                     <select class="form-control" onchange="location = this.value;">
                         <option disabled selected>Shortcuts</option>
@@ -53,7 +54,6 @@
                         <option value="/this_snippet/{{ snippet.getId }}">{{ snippet.getShortcut }}</option>
                     {% endfor %}
                     </select>
-                    <br>
                     <br>
                     <form action="/clear" method="post">
                         <button class="btn generate" type="submit" name="button">Delete all shortcuts</button>
