@@ -2,6 +2,7 @@
     date_default_timezone_set('America/Los_Angeles');
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/Snippet.php";
+    require_once __DIR__."/../src/User.php";
 
     // //Epicodus
     // $server = 'mysql:host=localhost;dbname=expander';
@@ -33,7 +34,7 @@
 
   //HOME
     $app->get("/", function() use ($app) {
-        return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll()));
+        return $app['twig']->render("home.html.twig", array('snippets' => Snippet::getAll(), 'user' => $_SESSION['user']));
     });
 
     //CREATE SNIPPET, RETURNS HOME
@@ -58,7 +59,7 @@
         $snippet_text = base64_decode($snippet_text);
         $snippet_vars = $snippet->countvars($snippet_text);
         $snippet_placeholders = $snippet->getPlaceHolders($snippet_text);
-        return $app['twig']->render('snippet.html.twig', array('snippet' => $snippet, 'snippet_text' => $snippet_text, 'placeholders' => $snippet_placeholders, 'snippetvars' => $snippet_vars, 'finaltext' => ''));
+        return $app['twig']->render('snippet.html.twig', array('user' => $_SESSION['user'], 'snippet' => $snippet, 'snippet_text' => $snippet_text, 'placeholders' => $snippet_placeholders, 'snippetvars' => $snippet_vars, 'finaltext' => ''));
     });
 
     //ADD VARIABLES TO SNIPPET
@@ -109,8 +110,45 @@
         return $app->redirect("/this_snippet/" . $snippet->getId());
     });
 
-    // temporary login page
+    // SIGNUP PAGE
+    $app->get("/sign_up", function() use ($app) {
+        return $app['twig']->render('signup.html.twig', array('user' => $_SESSION['user']));
+    });
+
+    // POST SIGNUP INFO
+    $app->post('/sign_up', function() use ($app) {
+        $user_name = $_POST['user_name'];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $email = $_POST['email'];
+        $id = null ;
+        $new_user = new User($user_name, $password, $email, $id);
+        $registered_user = $new_user->save();
+        if ($registered_user == true) {
+            $_SESSION['user'] = $new_user;
+            return $app['twig']->render('login.html.twig', array('registered_user' => $new_user, 'user' => $_SESSION['user']));
+        } else {
+            return $app['twig']->render('signup.html.twig', array('user' => $_SESSION['user']));
+        }
+    });
+
+    // LOGIN PAGE
     $app->get("/login", function() use ($app) {
+        return $app['twig']->render('login.html.twig', array('user' => $_SESSION['user']));
+    });
+
+    $app->post('/user_login', function() use ($app) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $verify = User::verifyLogin($username, $password);
+        if ($valid == false) {
+            return $app['twig']->render('login.html.twig', array('user' => $_SESSION['user']));
+        }
+        return $app['twig']->render('home.html.twig', array('current_user' => $_SESSION['current_user']));
+    });
+
+    // LOGOUT
+    $app->get('/logout', function() use ($app) {
+        $_SESSION['user'] = null;
         return $app['twig']->render('login.html.twig', array('user' => $_SESSION['user']));
     });
 

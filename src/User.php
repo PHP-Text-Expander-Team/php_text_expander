@@ -51,6 +51,24 @@
             return $found_user;
         }
 
+        static function userLogin($username, $password)
+        {
+            $all_users = User::getAll();
+            $found_user = null;
+            foreach($all_users as $user) {
+                if ($user->getUserName() === $username || $user->getEmail() === $username && password_verify($password, $user->getPassword())) {
+                    $found_user = $user;
+                    break;
+                }
+            }
+            if ($found_user !== null) {
+                $_SESSION['user'] = $found_user;
+                return $found_user;
+            } else {
+                return false;
+            }
+        }
+
 //--regular functions--
 
         function save()
@@ -80,6 +98,21 @@
         {
             $this->email = $email;
             $GLOBALS['DB']->exec("UPDATE users SET email = '{$this->email}' WHERE id = {$this->getId()};");
+        }
+
+        function getSnippets()
+        {
+            $snippets = Array();
+            $returned_snippets = $GLOBALS['DB']->query("SELECT * FROM snippets WHERE user_id = {$this->getId()};");
+            foreach($returned_snippets as $snippet) {
+                $id = $snippet['id'];
+                $shortcut = $snippet['shortcut'];
+                $text = $snippet['text'];
+                $user_id = $snippet['user_id'];
+                $new_snippet = new Snippet($shortcut, $text, $user_id, $id);
+                array_push($snippets, $new_snippet);
+            }
+            return $snippets;
         }
 
 //--getters and setters--

@@ -4,12 +4,14 @@
         private $id;
         private $shortcut;
         private $text;
+        private $user_id;
 
-        function __construct($shortcut, $text, $id = null)
+        function __construct($shortcut, $text, $user_id, $id = null)
         {
             $this->shortcut = $shortcut;
             $this->text = $text;
             $this->id = $id;
+            $this->user_id = $user_id;
         }
 //--static functions--
 
@@ -21,7 +23,8 @@
                 $id = $snippet['id'];
                 $shortcut = $snippet['shortcut'];
                 $text = $snippet['text'];
-                $new_snippet = new Snippet($shortcut, $text, $id);
+                $user_id = $snippet['user_id'];
+                $new_snippet = new Snippet($shortcut, $text, $user_id, $id);
                 array_push($snippets, $new_snippet);
             }
             return $snippets;
@@ -51,7 +54,7 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO snippets (shortcut, text) VALUES ('{$this->getShortcut()}', '{$this->getText()}');");
+            $GLOBALS['DB']->exec("INSERT INTO snippets (shortcut, text, user_id) VALUES ('{$this->getShortcut()}', '{$this->getText()}' '{$this->getUserId()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
@@ -134,6 +137,11 @@
             $this->text = $text;
         }
 
+        function setUserId($user_id)
+        {
+            $this->user_id = $user_id;
+        }
+
         function getShortcut()
         {
             return $this->shortcut;
@@ -147,6 +155,11 @@
         function getId()
         {
             return $this->id;
+        }
+
+        function getUserId()
+        {
+            return $this->user_id;
         }
     }
 ?>

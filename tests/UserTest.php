@@ -6,7 +6,6 @@
     */
 
     require_once "src/Snippet.php";
-    require_once "src/Variable.php";
     require_once "src/User.php";
 
     //Epicodus
@@ -32,7 +31,6 @@
         protected function teardown()
         {
             Snippet::deleteAll();
-            Variable::deleteAll();
             User::deleteAll();
         }
 
@@ -194,6 +192,24 @@
 
             $this->assertEquals([$new_user, $new_user2], $result);
         }
+
+        // function test_userLogin()
+        // {
+        //     $user_name = "XxX420BlazeItPHPBoyzXxX";
+        //     $password = "macmuffin";
+        //     $email = "james.mcneil@gmail.com";
+        //     $id = 1;
+        //     $new_user = new User ($user_name, $password, $email, $id);
+        //     $new_user->save();
+        //
+        //     $$result = User::userLogin($new_user->getUserName(), $new_user->getPassword());
+        //
+        //     var_dump($result);
+        //     var_dump($new_user);
+        //
+        //
+        //     $this->assertEquals($new_user, $result);
+        // }
    }
 
  ?>
