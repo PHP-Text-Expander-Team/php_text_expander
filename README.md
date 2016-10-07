@@ -6,14 +6,14 @@
 
 ## User Story
 
-_As a power user, I want an application that will allow me to save text and assign it a shortcut so that I can use that text later without having to retype it.  
-	*	It must save my shortcut and text input.
-	*	I must be able to access saved shortcuts._
+_As a power user, I want an application that will allow me to save text and assign it a shortcut so that I can use that text later without having to retype it._
+	*	_It must save my shortcut and text input._
+	*	_I must be able to access saved shortcuts._
 
-As a developer, I want a program that can save templates of code and text I write every day. I would like to be able to modify my templates by adding text variables that can be replaced whenever I have to reuse the template.
-  * I must be able to save and access large templates of code and text.
-  * I must be able to add variables when I create a template.
-  * I must be able to replace those variables with text later when I want to use my template_
+_As a developer, I want a program that can save templates of code and text I write every day. I would like to be able to modify my templates by adding text variables that can be replaced whenever I have to reuse the template._
+  * _I must be able to save and access large templates of code and text._
+  * _I must be able to add variables when I create a template._
+  * _I must be able to replace those variables with text later when I want to use my template_
 
 ## Description
 
