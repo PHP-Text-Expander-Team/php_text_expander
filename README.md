@@ -1,12 +1,23 @@
-# PHP Text Expander
+# Code Cheats
 
-#### _PHP Week 5 Group Project, 9.30.2016_
+#### _PHP Week 5 Group Project, 10.2.2016-10.7.2016_
 
 #### By _**Ryan Loos, Stephen Newkirk, Martin Cartledge, Matthew Brandenburg**_
 
+## User Story
+
+_As a power user, I want an application that will allow me to save text and assign it a shortcut so that I can use that text later without having to retype it._
+  * _It must save my shortcut and text input._
+  * _I must be able to access saved shortcuts._
+
+_As a developer, I want a program that can save templates of code and text I write every day. I would like to be able to modify my templates by adding text variables that can be replaced whenever I have to reuse the template._
+  * _I must be able to save and access large templates of code and text._
+  * _I must be able to add variables when I create a template._
+  * _I must be able to replace those variables with text later when I want to use my template_
+
 ## Description
 
-_The Text Expander application allows a user to input text and assign that text with a shorthand code. When the user input the shorthand code the program will return the assigned text._
+_The Code Cheats application allows a user to input text and assign that text a shortcut. When the user selects the shortcut the program will return the assigned text._
 
 ## Setup/Installation Requirements
 
@@ -35,11 +46,14 @@ _The Text Expander application allows a user to input text and assign that text 
 
 ## Known Bugs
 
-_None yet_
+_When highlighting text to replace it with a variable, the original text does not delete_
 
 ## Support and contact details
 
-_Dem PHP Boys: DemPHPboys@gmail.com_
+* _Team lead - Ryan Loos @ rloos289@gmail.com_
+* _Team member - Stephen Newkirk @ newkirk771@gmail.com_
+* _Team member - Martin Cartledge @ martincartledge90@gmail.com_
+* _Team member - Matthew Brandenburg @ matt.bran87@gmail.com_
 
 ## Technologies Used
 
@@ -53,4 +67,5 @@ _Dem PHP Boys: DemPHPboys@gmail.com_
 
 *This webpage is licensed under the GPL license.*
 
-Copyright (c) 2016 **Dem PHP Boys**
+Copyright (c) 2016 **Code Cheats**
+
