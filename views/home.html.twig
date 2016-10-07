@@ -47,7 +47,7 @@
             {% if snippets is not empty %}
                 <div class="col-md-4">
                     <h3>Archived Shortcuts:</h3>
-                    <select onchange="location = this.value;">
+                    <select class="form-control" onchange="location = this.value;">
                         <option disabled selected>Shortcuts</option>
                     {% for snippet in snippets %}
                         <option value="/this_snippet/{{ snippet.getId }}">{{ snippet.getShortcut }}</option>
