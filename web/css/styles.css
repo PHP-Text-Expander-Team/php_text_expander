@@ -26,6 +26,10 @@ h1 {
     padding: 10px;
 }
 
+.subtext {
+    font-style: italic;
+}
+
 .footer {
     color: #FFF;
     border-top: 2px #ffb732 solid;

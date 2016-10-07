@@ -18,7 +18,7 @@
                 <div class="line">
                     <br>
                     <h4>
-                    Text Expander is an easy to use text utility that allows you to save and modify your very own text templates. Quickly modify your text by setting up variables and replace them anytime you use your template. Your templates can be paste any where you like.
+                    Code->Cheats is an easy to use text utility that allows you to save and modify your very own text templates. Quickly modify your text by setting up variables and replace them anytime you use your template. Templates can be copied to the clipboard with the press of a button.
                 </h4>
                 <hr>
                     <h5>Create Text Templates</h5>
@@ -28,7 +28,7 @@
                     Variables add power to your text templates by allowing you to later replace the variables with custom text.
 
                     <h5>Reusable Templates</h5>
-                    All saved text has no limits on how many times it can be used. Reuse and modify it whenever you need it
+                    Your templates are saved so you can reuse and modify them with no limitations.
                 </div>
             </div>
             <div class="col-md-4">
@@ -47,6 +47,7 @@
             {% if snippets is not empty %}
                 <div class="col-md-4">
                     <h3>Archived Shortcuts:</h3>
+                    <h5 class="subtext">Select a saved shortcut to use</h5>
                     <select class="form-control" onchange="location = this.value;">
                         <option disabled selected>Shortcuts</option>
                     {% for snippet in snippets %}
@@ -62,6 +63,7 @@
             {% endif %}
             <div class="col-md-3 variablebuttons">
                 <h3>Variables:</h3>
+                <h5 class="subtext">Click to insert variables into your text</h5>
                 <button type="button" value="įįł__1__łįį" class="placeholder variable1">Variable 1</button>
                 <button type="button" value="įįł__2__łįį" class="placeholder variable2">Variable 2</button>
                 <button type="button" value="įįł__3__łįį" class="placeholder variable3">Variable 3</button>
