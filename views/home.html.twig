@@ -6,6 +6,7 @@
       <script src='/js/jquery-3.1.0.js'></script>
       <script src='/js/bootstrap.min.js' type='text/javascript'></script>
       <script src='/js/scripts.js'></script>
+      <link href="https://fonts.googleapis.com/css?family=Roboto|Shrikhand" rel="stylesheet">
     <title>Code -> Cheats</title>
   </head>
   <body>
@@ -21,12 +22,17 @@
                     Code->Cheats is an easy to use text utility that allows you to save and modify your very own text templates. Quickly modify your text by setting up variables and replace them anytime you use your template. Templates can be copied to the clipboard with the press of a button.
                 </h4>
                 <hr>
+                <img src="/img/font.png" alt="text" class="icons"/>
                     <h5>Create Text Templates</h5>
                     Create and save customizable text templates with ease. Just add your text and save.
-
+                    <br>
+                    <br>
+                    <img src="/img/bolt.png" alt="text" class="icons"/>
                     <h5>Variables</h5>
                     Variables add power to your text templates by allowing you to later replace the variables with custom text.
-
+                    <br>
+                    <br>
+                    <img src="/img/refresh.png" alt="text" class="icons"/>
                     <h5>Reusable Templates</h5>
                     Your templates are saved so you can reuse and modify them with no limitations.
                 </div>
@@ -34,9 +40,9 @@
             <div class="col-md-4">
                 <form action="/new_snippet" method="post">
                     <h3>Shortcut</h3>
-                    <input type="text" name="shortcut" placeholder=";em" required>
+                    <input type="text" name="shortcut" placeholder="email" required>
                     <h3>Text Input</h3>
-                    <textarea cols="50" rows="20" id="txt1" name="text" placeholder="emailaddress@email.com" required></textarea>
+                    <textarea cols="50" rows="20" id="txt1" name="text" placeholder="me@example.com" required></textarea>
                     <br>
                     <br>
                     <button class="btn generate" type="submit">Generate</button>
@@ -45,7 +51,7 @@
                 </form>
             </div>
             {% if snippets is not empty %}
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <h3>Archived Shortcuts:</h3>
                     <h5 class="subtext">Select a saved shortcut to use</h5>
                     <select class="form-control" onchange="location = this.value;">
@@ -54,7 +60,6 @@
                         <option value="/this_snippet/{{ snippet.getId }}">{{ snippet.getShortcut }}</option>
                     {% endfor %}
                     </select>
-                    <br>
                     <br>
                     <form action="/clear" method="post">
                         <button class="btn generate" type="submit" name="button">Delete all shortcuts</button>

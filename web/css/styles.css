@@ -3,9 +3,9 @@
 }
 
 .header {
-    background-color: #CCC;
+    background-color: #c5d5cb;
     padding: 40px;
-    color: #FFF;
+    color: #c5d5cb;
 }
 
 h1 {
@@ -14,7 +14,7 @@ h1 {
 
 .generate {
     background-color: white;
-    border: 2px #ffb732 solid;
+    border: 2px #367B9C solid;
     border-radius: 10px;
     padding: 10px;
 }
@@ -31,13 +31,13 @@ h1 {
 }
 
 .footer {
-    color: #FFF;
-    border-top: 2px #ffb732 solid;
+    color: #c5d5cb;
+    border-top: 2px #367B9C solid;
     position: absolute;
     bottom: 0;
     left: 0;
     padding: 5px;
-    color: #000;
+    color: #AA7539;
 }
 
 .about {
@@ -46,8 +46,8 @@ h1 {
 
 .deleteall {
     background-color: white;
-    color: #000;
-    border: 2px #FFF solid;
+    color: #AA7539;
+    border: 2px #AA7539 solid;
 }
 
 .variable1 {
@@ -80,7 +80,7 @@ h1 {
 }
 
 .variable7 {
-    color: grey;
+    color: #AA7539;
     display: none;
 }
 
@@ -105,8 +105,13 @@ h1 {
     margin-right: auto;
 }
 
-h1, h2, h3 {
-    color: #ffb732;
+h1 {
+    font-family: 'Shrikhand', cursive;
+    color: #367B9C;
+}
+
+h2, h3 {
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -115,8 +120,9 @@ button {
 }
 
 button:hover {
-    background-color: #ffb732;
-    border: 2px #000 solid;
+    background-color: transparent;;
+    border: 2px #367B9C solid;
+    font-size: 1.2em;
 }
 
 input {
@@ -124,13 +130,19 @@ input {
 }
 
 .copy {
-        background-color: #FFF;
-        border: 2px #ffb732 solid;
+        background-color: transparent;;
+        border: 2px #367B9C solid;
         border-radius: 10px;
         padding: 10px;
 }
 
 input:hover {
-    background-color: #ffb732;
-    border: 2px #000 solid;
+    background-color: transparent;
+    border: 2px #367B9C solid;
+    font-size: 1.25em;
+}
+
+.icons {
+    width: 40px;
+    height: 40px;
 }
