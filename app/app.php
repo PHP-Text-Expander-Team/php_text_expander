@@ -4,16 +4,16 @@
     require_once __DIR__."/../src/Snippet.php";
 
     // //Epicodus
-    $server = 'mysql:host=localhost;dbname=expander';
-    $username = 'root';
-    $password = 'root';
-    $DB = new PDO($server, $username, $password);
-
-    // home mac
-    // $server = 'mysql:host=localhost:8889;dbname=expander';
+    // $server = 'mysql:host=localhost;dbname=expander';
     // $username = 'root';
     // $password = 'root';
     // $DB = new PDO($server, $username, $password);
+
+    // home mac
+    $server = 'mysql:host=localhost:8889;dbname=expander';
+    $username = 'root';
+    $password = 'root';
+    $DB = new PDO($server, $username, $password);
 
     use Symfony\Component\HttpFoundation\Request;
     Request::enableHttpMethodParameterOverride();
