@@ -13,9 +13,15 @@
      <div class="text-center header">
         <h1>Code -> Cheats</h1>
      </div>
-     <div class="container">
-        <h2>Update Snippet</h2>
-        <div class="row">
+     <div class="container-fluid">
+        <h2 class="text-center">Update Snippet</h2>
+            <div class="row col-md-offset-5">
+                <div class="col-md-6">
+                    <form action="/" method="get">
+                        <button type="submit" class="btn generate">Home</button>
+                    </form>
+                </div>
+            </div>
             <div class="col-md-4 col-md-push-2">
                 <form action="/update_shortcut/{{ snippet.getId }}" method="post">
                     <input type="hidden" name="_method" value="patch">
@@ -38,9 +44,6 @@
                 </form>
             </div>
         </div>
-        <form action="/" method="get">
-            <button type="submit" class="btn generate">Home</button>
-        </form>
     </div>
   </body>
 </html>

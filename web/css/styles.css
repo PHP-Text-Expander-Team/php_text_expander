@@ -137,3 +137,8 @@ input:hover {
     border: 2px #367B9C solid;
     font-size: 1.25em;
 }
+
+.icons {
+    width: 40px;
+    height: 40px;
+}
