@@ -50,10 +50,10 @@ _When highlighting text to replace it with a variable, the original text does no
 
 ## Support and contact details
 
-_Team lead - Ryan Loos @ rloos289@gmail.com_
-_Team member - Stephen Newkirk @ newkirk771@gmail.com_
-_Team member - Martin Cartledge @ martincartledge90@gmail.com_
-_Team member - Matthew Brandenburg @ matt.bran87@gmail.com_
+* _Team lead - Ryan Loos @ rloos289@gmail.com_
+* _Team member - Stephen Newkirk @ newkirk771@gmail.com_
+* _Team member - Martin Cartledge @ martincartledge90@gmail.com_
+* _Team member - Matthew Brandenburg @ matt.bran87@gmail.com_
 
 ## Technologies Used
 
