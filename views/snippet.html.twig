@@ -6,14 +6,17 @@
       <script src='/js/jquery-3.1.0.js'></script>
       <script src='/js/bootstrap.min.js' type='text/javascript'></script>
       <script src='/js/scripts.js'></script>
-    <title>Text Expander</title>
+    <title>Code -> Cheats</title>
   </head>
   <body>
     <div class="text-center header">
-        <h1>420 Blaze It</h1>
+        <h1>Code -> Cheats</h1>
     </div>
     <div class="container-fluid text-center">
         <h2>{{ snippet.getShortcut }}</h2>
+        <form action="/" method="get">
+            <button type="submit" class="btn generate">Home</button>
+        </form>
 <!-- PAGE W/ VARIABLES -->
         {% if snippetvars is not empty %}
             <div class="row">
@@ -28,13 +31,16 @@
                             {% endfor %}
                         <br>
                         <button class="btn generate" type="submit">Submit</button>
+                        <form action="/update/{{ snippet.getId }}" method="get">
+                            <button type="submit" class="btn generate">Update</button>
+                        </form>
                     </form>
                 </div>
 <!-- RESULTS -->
             <div class="col-md-4 col-md-push-2">
                 <h3>Final Result:</h3>
                 <textarea cols="50" rows="20" type="text" id="visible-input" value="{{ finaltext }}">{{ finaltext }}</textarea>
-                <input type="button" id="visible-button" value="Copy">
+                <!-- copy button here  -->
             </div>
         {% else %}
         <!-- PAGE W/O VARIABLES -->
@@ -46,17 +52,7 @@
                     </div>
         {% endif %}
 <!-- NAVIGATION -->
-    <form action="/update/{{ snippet.getId }}" method="get">
-        <button type="submit" class="btn generate">Update</button>
-    </form>
-    <form action="/delete_snippet/{{ snippet.getId }}" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <button class="btn generate" type="submit">Delete</button>
-    </form>
-    <form action="/" method="get">
-        <button type="submit" class="btn generate">Home</button>
-    </form>
-
+        <input  class="btn copy" type="button" id="visible-button" value="Copy">
 </div>
   </body>
 </html>

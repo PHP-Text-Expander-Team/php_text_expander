@@ -114,3 +114,19 @@ button:hover {
     background-color: #ffb732;
     border: 2px #000 solid;
 }
+
+input {
+    transition: all .5s ease;
+}
+
+.copy {
+        background-color: #FFF;
+        border: 2px #ffb732 solid;
+        border-radius: 10px;
+        padding: 10px;
+}
+
+input:hover {
+    background-color: #ffb732;
+    border: 2px #000 solid;
+}

@@ -10,7 +10,7 @@
     // $DB = new PDO($server, $username, $password);
 
     // home mac
-    $server = 'mysql:host=localhost:8889;dbname=expander_demo';
+    $server = 'mysql:host=localhost:8889;dbname=expander';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
