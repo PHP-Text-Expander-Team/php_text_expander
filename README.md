@@ -15,7 +15,7 @@ _The Text Expander application allows a user to input text and assign that text 
 * _Start up Apache and MySQL_
 * _CREATE DATABASE expander;_
 * _USE expander;_
-* _CREATE TABLE snippets (id serial PRIMARY KEY, shortcut VARCHAR (255), text TEXT);_
+* _CREATE TABLE snippets (id serial PRIMARY KEY, shortcut VARCHAR (255), text LONGTEXT);_
 * _start a server in web directory (php -S localhost:8000)_
 * _Go to localhost:8000 in web browser_
 * _Enjoy_
@@ -24,11 +24,12 @@ _The Text Expander application allows a user to input text and assign that text 
 
 |Behavior|Input|Output|
 |--------|:---:|-----:|
-|Program can take in user input and return input|"test"|"test"|
-|User can save a Snippet instance in the database|"te" "test"|"te" "test"|
-|The program can retrieve the saved Snippet by id number|"1", "2"|"test 1", "test 2"|
-|User can see all saved Snippets|click show all|"te", "fe", "je"|
-|User can modify an existing Snippet|"re == test"|"te == test"|
+|User can save a Snippet instance and shortcut in the database|"em" => "me@email.com"|"em" => "me@email.com"|
+|User can save variable into input |"em" => |"me@(variable.com)"|
+|Before final output, user can change information in variable |"me@(variable.com)"|"me@gmail.com"|
+|The program can retrieve the saved Snippet by its shortcut|"em"|"me@email.com"|
+|User can see all saved Snippets|click dropdown|"em", "class", "getset"|
+|User can modify an existing Snippet|"em == me@email.com"|"em == you@email.com"|
 |User can delete an individual Snippet|"te", click "delete"|""|
 |User can delete all Snippets|click delete all|""|
 
